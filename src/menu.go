@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
 
 func main() {
 	for {
@@ -16,19 +19,18 @@ func main() {
 		fmt.Println("Input Error. Please enter a letter (a, b or q).")
 		continue
 		}
-
+		
 		switch choice {
 			case "a":
 			var Personnage string
 			fmt.Println("selected 'Character Information'.")
-			fmt.Scanln(&Personnage)
-			fmt.Printf("%s", Personnage)
+			fmt.Println(&Personnage)
    
 			case "b":
 			fmt.Println("selected 'Inventory'.")
    
 			case "q":
-			fmt.Println("selected 'Exit'. Goodbye!")
+			fmt.Println("Goodbye!")
 			return
 			default:
 			fmt.Println("Incorrect choice. Please select an option from the menu (a, b or q)")
