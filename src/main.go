@@ -7,16 +7,6 @@ import (
 
 
 func main() {
-	conserve := character.Perso{
-		"Pokemon",
-		"Ranger",
-		1,
-		50,
-		25,
-		0,
-		2,
-	}
-	
 	for {
 		fmt.Println("a. Info perso")
 		fmt.Println("b. Inventory")
@@ -34,7 +24,8 @@ func main() {
 		switch choice {
 			case "a":
 			fmt.Println("selected 'Character Information'.")
-			fmt.Println("Name: ",getPerso(&conserve))
+			character.Personne()
+			
 			case "b":
 			fmt.Println("selected 'Inventory'.")
    
@@ -45,10 +36,4 @@ func main() {
 			fmt.Println("Incorrect choice. Please select an option from the menu (a, b or q)")
 		}
 	}
-}
-func getPerso(p *character.Perso) string {
-	return p.Name
-}
-func EditPerso(p character.Perso) string {
-	return p.Name
 }
