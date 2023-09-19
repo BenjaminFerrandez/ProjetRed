@@ -16,7 +16,7 @@ func main() {
 		_, err := fmt.Scan(&choice)
 
 		if err != nil {
-		fmt.Println("Input Error. Please enter a letter (a, b or q).")
+		fmt.Println("Input Error. Please enter a letter (a, b or q).",'\n')
 		continue
 		}
 		
