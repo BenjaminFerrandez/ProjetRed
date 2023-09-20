@@ -1,39 +1,28 @@
 package main
 
-import (
-	"fmt"
-	"game/character"
-)
-
+import "fmt"
 
 func main() {
-	for {
-		fmt.Println("a. Info perso")
-		fmt.Println("b. Inventory")
-		fmt.Println("q. Quitter")
+    for {
+        fmt.Println("Bienvenue")
+        fmt.Println("Click 's' to start or 'q' to quit")
+        var choice string
+        _, err := fmt.Scan(&choice)
+        if err != nil {
+            fmt.Println("Error, please try again")
+            continue
+        }
+        switch choice {
+        case "s":
+            fmt.Println("Goodluck and enjoy !")
+            start()
 
-		var choice string
-		fmt.Print("Enter letter of choice ")
-		_, err := fmt.Scan(&choice)
+        case "q":
+            fmt.Println("Goodbye!")
+            return
 
-		if err != nil {
-		fmt.Println("Input Error. Please enter a letter (a, b or q).")
-		continue
-		}
-		
-		switch choice {
-			case "a":
-			fmt.Println("selected 'Character Information'.")
-			character.Personne()
-			
-			case "b":
-			fmt.Println("selected 'Inventory'.")
-   
-			case "q":
-			fmt.Println("Goodbye!")
-			return
-			default:
-			fmt.Println("Incorrect choice. Please select an option from the menu (a, b or q)")
-		}
-	}
+        default:
+            fmt.Println("Error, please try again")
+        }
+    }
 }
