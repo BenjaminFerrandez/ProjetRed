@@ -6,6 +6,8 @@ import (
 	"os"
 )
 
+var choice string
+
 func start() {
 	fmt.Println("M A I N    M E N U")
 	fmt.Println("a. Info perso")
@@ -13,7 +15,6 @@ func start() {
 	fmt.Println("r. Return to start screen")
 	fmt.Println("q. Quit game")
 	
-	var choice string
 	fmt.Scanln(&choice)
 	switch choice {
 		case "a":
@@ -36,9 +37,8 @@ func submenu1() {
 	fmt.Println("r. Return to Main Menu")
 	fmt.Println("q. Quit game")
 	
-	var subchoice1 string
-	fmt.Scanln(&subchoice1)
-	switch subchoice1 {
+	fmt.Scanln(&choice)
+	switch choice {
 		case "1":
 		submenu_perso1() 
 		case "2":
@@ -60,10 +60,9 @@ func submenu2() {
 	fmt.Println("You havo 0 items in inventory")
 	fmt.Println("r. Return to Main Menu")
 	fmt.Println("q. Quit game")
-
-	var subchoice2 string
-	fmt.Scanln(&subchoice2)
-	switch subchoice2 {
+	
+	fmt.Scanln(&choice)
+	switch choice {
 		case "r":
 		start()
 		case "q":
@@ -78,10 +77,9 @@ func submenu_perso1() {
 	structure.TankInfo()
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
-	
-	var subchoice3 string
-	fmt.Scanln(&subchoice3)
-	switch subchoice3 {
+
+	fmt.Scanln(&choice)
+	switch choice {
 		case "r":
 		submenu1()
 		case "q":
@@ -97,9 +95,8 @@ func submenu_perso2() {
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
 	
-	var subchoice4 string
-	fmt.Scanln(&subchoice4)
-	switch subchoice4 {
+	fmt.Scanln(&choice)
+	switch choice {
 		case "r":
 		submenu1()
 		case "q":
@@ -115,9 +112,8 @@ func submenu_perso3() {
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
 	
-	var subchoice5 string
-	fmt.Scanln(&subchoice5)
-	switch subchoice5 {
+	fmt.Scanln(&choice)
+	switch choice {
 		case "r":
 		submenu1()
 		case "q":
