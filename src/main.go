@@ -12,12 +12,10 @@ func main() {
         	case "s":
             fmt.Println("Goodluck and enjoy !")
             start()
-
        		case "q":
             fmt.Println("Goodbye!")
             return
-
-        default:
+       		default:
             fmt.Println("Error, please try again")
         }
     }
