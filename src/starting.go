@@ -74,7 +74,7 @@ func submenu2() {
 }
 func submenu_perso1() {
 	fmt.Println("T A N K")
-	structure.TankInfo()
+	structure.InitTank()
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
 
@@ -91,7 +91,7 @@ func submenu_perso1() {
 }
 func submenu_perso2() {
 	fmt.Println("E L F E")
-	structure.ElfeInfo()
+	structure.InitElfe()
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
 	
@@ -108,7 +108,7 @@ func submenu_perso2() {
 }
 func submenu_perso3() {
 	fmt.Println("S O R C I E R")
-	structure.SorcierInfo()
+	structure.InitSorcier()
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
 	
