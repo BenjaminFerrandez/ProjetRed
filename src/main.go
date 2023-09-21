@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
     for {
-        fmt.Println("Bienvenue")
+        fmt.Println("\nBienvenue")
         fmt.Println("Click 's' to start or 'q' to quit")
         var choice string
         fmt.Scanln(&choice)
