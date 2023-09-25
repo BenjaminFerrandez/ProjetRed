@@ -1,7 +1,8 @@
 package structure
 
-import "fmt"
+import ("fmt"
 
+)
 var sommaire2 []string
 
 type Perso struct {
@@ -16,7 +17,7 @@ type Perso struct {
 
 func ChoixPersonne() {
     sommaire1 := []string{"   Name:     ", "Class:"}
-    sommaire2 = []string{"Level :  ", "HPmax :  ", "HPact :  ", "Inventory :", "Money :"}
+    sommaire2 = []string{"Level :  ", "HPmax :  ", "HPact :  "}
     Tank := []string{"1. Tenace   ", "   Tank"}
     Elfe := []string{"2. Chiro    ", "   Elfe"}
     Sorcier := []string{"3. Reicros  ", "Sorcier"}
@@ -25,20 +26,28 @@ func ChoixPersonne() {
     fmt.Println(Elfe)
     fmt.Println(Sorcier)
 }
-func InitTank() {
-    TankInfo := []string{"lvl 1     ", "200      ", "100      ", "0          ", "100 $ "}
+func InfoTank() {
+    TankInfo := []string{"lvl 1     ", "200      ", "100     "}
+    fmt.Print("      ")
     fmt.Println(sommaire2)
+    fmt.Print("      ")
     fmt.Println(TankInfo)
+    fmt.Println("")
+    AttackTank()
  
 }
-func InitElfe() {
-    ElfeInfo := []string{"lvl 1     ", "140      ", "70       ", "0          ", "100 $ "}
+func InfoElfe() {
+    ElfeInfo := []string{"lvl 1     ", "140      ", "70       "}
     fmt.Println(sommaire2)
     fmt.Println(ElfeInfo)
+    AttackElfe()
     
 }
-func InitSorcier() {
-    SorcierInfo := []string{"lvl 1     ", "160      ", "80       ", "0          ", "100 $ "}
+func InfoSorcier() {
+    SorcierInfo := []string{"lvl 1     ", "160      ", "80       "}
     fmt.Println(sommaire2)
     fmt.Println(SorcierInfo)
+    AttackSorcier()
 }
+
+
