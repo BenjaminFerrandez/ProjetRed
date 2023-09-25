@@ -22,7 +22,7 @@ type InventoryTank struct {
     Value      int
 }
 
-func Game() {
+func GameTank() {
     rand.Seed(time.Now().UnixNano())
 
     player := Tank{Name: "Tenace", Health: 100}
@@ -31,9 +31,9 @@ func Game() {
     attack1 := TankAttack{Name: "Tremblement de terre ", Damage: 25}
     attack2 := TankAttack{Name: "Coup de poing", Damage: 40}
 
-
+    // Инвентарь игрока
     inventory := []InventoryTank{
-        {Name: "Health potion", EffectType: "Heal", Value: 15},
+        {Name: "Healph potion", EffectType: "Heal", Value: 15},
         {Name: "Poison potion", EffectType: "Poison", Value: 15},
         {Name: "Upgrade potion", EffectType: "DamageBoost", Value: 20},
         {Name: "Shield", EffectType: "Shield", Value: 15},
@@ -44,6 +44,7 @@ func Game() {
     TourDeCombat := 1
 
     for player.Health > 0 && enemy.Health > 0 {
+        
         fmt.Printf("\nTour de combat: %d\n", TourDeCombat)
         fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", player.Name, player.Health, enemy.Name, enemy.Health)
        var choice int
@@ -88,10 +89,6 @@ if len(inventory) == 0 {
             for i, item := range inventory {
                 fmt.Printf("%d. %s\n", i+1, item.Name)
             }
-			InventoryInGame()
-        	//for i, item := range inventory {
-                //fmt.Printf("%d. %s\n", i+1, item.Name)
-            //}
 
             var itemChoice int
             fmt.Print("Enter number of item: ")
@@ -111,12 +108,14 @@ if len(inventory) == 0 {
                 enemy.Health -= usedItem.Value
                 fmt.Printf("\nYou used %s and dealt %d damage to the enemy!\n", usedItem.Name, usedItem.Value)
             case "DamageBoost":
+              
                 playerAttack := attack1
                 playerAttack.Damage = int(float64(playerAttack.Damage) * 1.2)
                 enemyDamage := rand.Intn(playerAttack.Damage)
                 enemy.Health -= enemyDamage
                 fmt.Printf("\nYou used %s and did %d damage to the enemy!\n", usedItem.Name, enemyDamage)
             case "Shield":
+
                 player.Health += usedItem.Value
                 fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
             }
@@ -127,7 +126,6 @@ if len(inventory) == 0 {
             fmt.Println("Incorrect choice.")
             continue
         }
-
         if enemy.Health <= 0 {
             fmt.Println("You have won!")
             break

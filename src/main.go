@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import ("fmt"
+    "game/structure"
+)
 
 func main() {
     for {
@@ -10,8 +12,8 @@ func main() {
         fmt.Scanln(&choice)
         switch choice {
         	case "s":
-            fmt.Println("\nGoodluck and enjoy !")
-            start()
+            fmt.Println("Goodluck and enjoy !")
+            structure.Start()
        		case "q":
             fmt.Println("Goodbye!")
             return
