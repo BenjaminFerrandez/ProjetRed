@@ -48,6 +48,10 @@ func InfoSorcier() {
     fmt.Println(sommaire2)
     fmt.Println(SorcierInfo)
     AttackSorcier()
+<<<<<<< HEAD
 }
 
 
+=======
+}
+>>>>>>> 225360c (abdel est passé par la)

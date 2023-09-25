@@ -10,7 +10,7 @@ func main() {
         fmt.Scanln(&choice)
         switch choice {
         	case "s":
-            fmt.Println("Goodluck and enjoy !")
+            fmt.Println("\nGoodluck and enjoy !")
             start()
        		case "q":
             fmt.Println("Goodbye!")

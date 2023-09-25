@@ -144,4 +144,30 @@ func Inventaire() {
         }
     }
     Obj()
+<<<<<<< HEAD
+=======
+}
+
+func InventoryInGame() {
+    a := Health
+    b := Poison
+    c := Upgrade
+    d := Shieldd
+    fmt.Println("\nYou have:")
+    for i := 0; i <= stock-1; i++ {
+        if a != 0 {
+            fmt.Println(a, "health potion")
+            a = 0
+        } else if b != 0 {
+            fmt.Println(b, "poison potion")
+            b = 0
+        } else if c != 0 {
+            fmt.Println(c, "upgrade potion")
+            c = 0
+        } else if d != 0 {
+            fmt.Println(d, "shield")
+            d = 0
+        }
+    }
+>>>>>>> 225360c (abdel est passé par la)
 }

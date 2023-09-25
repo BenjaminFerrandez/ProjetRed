@@ -11,7 +11,11 @@ type Attaque struct {
 func AttackTank() {
     sommaireattack := []string{"Attack's name:        ", "Damage: ", "Precision: "}
     Tenace1 :=        []string{"Tremblement de terre  ", "25      ", "100        "}
+<<<<<<< HEAD
     Tenace2 :=        []string{"Coup de poing         ", "40      ", "55         "}
+=======
+    Tenace2 :=        []string{"Coup de poing         ", "40      ", "60         "}
+>>>>>>> 225360c (abdel est passé par la)
     fmt.Println(sommaireattack)
     fmt.Println(Tenace1)
     fmt.Println(Tenace2)
