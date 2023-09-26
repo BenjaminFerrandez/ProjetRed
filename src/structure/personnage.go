@@ -26,6 +26,7 @@ func ChoixPersonne() {
     fmt.Println(Elfe)
     fmt.Println(Sorcier)
 }
+
 func InfoTank() {
     TankInfo := []string{"lvl 1     ", "200      ", "100     "}
     fmt.Print("      ")
@@ -36,6 +37,7 @@ func InfoTank() {
     AttackTank()
  
 }
+
 func InfoElfe() {
     ElfeInfo := []string{"lvl 1     ", "140      ", "70       "}
     fmt.Println(sommaire2)
@@ -43,6 +45,7 @@ func InfoElfe() {
     AttackElfe()
     
 }
+
 func InfoSorcier() {
     SorcierInfo := []string{"lvl 1     ", "160      ", "80       "}
     fmt.Println(sommaire2)

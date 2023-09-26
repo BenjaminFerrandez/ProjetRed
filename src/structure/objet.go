@@ -23,14 +23,15 @@ var Shieldd int = 0
 func Obj() {
     Health_potion := []string{"1. Health potion:", "Donne 15HP et coûte 25 $"}
     Poison_potion := []string{"2. Poison potion:", "Enlève 15HP à l'adversaire et coûte 25 $"}
-    Upgrade_potion := []string{"3. Upgrade potion:", "Améliore tes attaques de 20% sur ton prochain tour et coûte 50 $"}
-    Shield := []string{"4. Shield:", "Réduit les dégâts de 15% de la prochaine attaque subie et coûte 40 $"}
+    Upgrade_potion := []string{"3. Upgrade potion:", "Améliore tes attaques de 20%, sur ton prochain tour et coûte 50 $"}
+    Shield := []string{"4. Shield:", "Réduit les dégâts de 15%, de la prochaine attaque subie et coûte 40 $"}
     fmt.Println(Health_potion)
     fmt.Println(Poison_potion)
     fmt.Println(Upgrade_potion)
     fmt.Println(Shield)
     ChoixObj()
 }
+
 func ChoixObj() {
 	//ChoixObj()
     fmt.Println("\ng. Go!")
@@ -67,8 +68,8 @@ func ChoixObj() {
 		Obj()
 	}
 }
-var inventory []Object 
 
+var inventory []Object 
 
 func AddToInventory(item Object) {
     
@@ -93,7 +94,6 @@ func AddToInventory(item Object) {
     }
 }
 
-
 func ShowInventory() {
     fmt.Println("\nYour inventory:")
     for _, invItem := range inventory {
@@ -108,29 +108,33 @@ func Health_potion() {
     AddToInventory(item)
     Obj()
 }
+
 func Poison_potion() {
     item := Object{Name: "Poison potion", Effect: "Poison", Price: 25}
   
     AddToInventory(item)
     Obj()
 }
+
 func Upgrade_potion() {
     item := Object{Name: "Upgrade potion", Effect: "Upgrade", Price: 50}
  
     AddToInventory(item)
     Obj()
 }
+
 func Shield() {
     item := Object{Name: "Shield", Effect: "Shield", Price: 40}
   
     AddToInventory(item)
     Obj()
 }
+
 func Inventaire() {
     a := Health
     b := Poison
     c := Upgrade
-    d := Shieldd
+    d := Shield
     fmt.Println("\nYou have:")
     for i := 0; i <= stock-1; i++ {
         if a != 0 {
@@ -148,4 +152,17 @@ func Inventaire() {
         }
     }
     Obj()
+}
+
+//yanisse
+func stocage () {
+    if Health != 0 {
+        stock += 1
+    } else if Poison != 0 {
+        stock += 1
+    } else if Upgrade != 0 {
+        stock += 1
+    } else if Shieldd != 0 {
+        stock += 1
+    }
 }

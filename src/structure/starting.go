@@ -73,6 +73,8 @@ func submenu_perso1() {
 		submenu_perso1()
 	}
 }
+
+
 func submenu_perso2() {
 	fmt.Println("E L F E")
 	InfoElfe()
@@ -94,6 +96,7 @@ func submenu_perso2() {
 		submenu_perso2()
 	}
 }
+
 func submenu_perso3() {
 	fmt.Println("S O R C I E R")
 	InfoSorcier()
@@ -115,6 +118,7 @@ func submenu_perso3() {
 		submenu_perso3()
 	}
 }
+
 func submenu_inventaire() {
 	var coins int = 100
     var stock int = 0
