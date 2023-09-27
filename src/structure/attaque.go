@@ -2,12 +2,14 @@ package structure
 
 import "fmt"
 
+//caractéristique d'une attaque
 type Attaque struct {
-    Name string
-    Damage int
-    Précision int
+    Name string //son nom
+    Damage int //les dégats qu'elle inflige
+    Précision int //sa prédision (not used)
 }
 
+//affiche les caractéristique des attaques du perso1
 func AttackTank() {
     sommaireattack := []string{"Attack's name:        ", "Damage: ", "Precision: "}
     Tenace1 :=        []string{"Tremblement de terre  ", "25      ", "100        "}
@@ -16,6 +18,8 @@ func AttackTank() {
     fmt.Println(Tenace1)
     fmt.Println(Tenace2)
 }
+
+//affiche les caractéristique des attaques du perso2
 func AttackElfe() {
     sommaireattack := []string{"Attack's name:        ", "Damage: ", "Precision: "}
     Chiro1 :=         []string{"Volvi                 ", "15      ", "85         "} 
@@ -24,6 +28,8 @@ func AttackElfe() {
     fmt.Println(Chiro1)
     fmt.Println(Chiro2)
 }
+
+//affiche les caractéristique des attaques du perso3
 func AttackSorcier() {
     sommaireattack := []string{"Attack's name:        ", "Damage: ", "Precision: "}
     Reicros1 :=       []string{"Boule de feu          ", "20      ", "75         "}

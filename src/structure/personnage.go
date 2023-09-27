@@ -5,16 +5,17 @@ import ("fmt"
 )
 var sommaire2 []string
 
-type Perso struct {
-    Name string
-    Class string
-    Level int
-    HPmax int
-    HPact int
-    Inventory int
-    Money int
+type Perso struct {  //caractéristique d'un personnage
+    Name string //son nom
+    Class string //sa classe
+    Level int //son niveau
+    HPmax int //point de vie maximum
+    HPact int //point de vie de départ
+    Inventory int //inventaire
+    Money int //pièces
 }
 
+//affiche les noms et classe des personnages
 func ChoixPersonne() {
     sommaire1 := []string{"   Name:     ", "Class:"}
     sommaire2 = []string{"Level :  ", "HPmax :  ", "HPact :  "}
@@ -27,6 +28,7 @@ func ChoixPersonne() {
     fmt.Println(Sorcier)
 }
 
+//affiche les infos complémentaires du perso1
 func InfoTank() {
     TankInfo := []string{"lvl 1     ", "200      ", "100     "}
     fmt.Print("      ")
@@ -38,6 +40,7 @@ func InfoTank() {
  
 }
 
+//affiche les infos complémentaires du perso2
 func InfoElfe() {
     ElfeInfo := []string{"lvl 1     ", "140      ", "70       "}
     fmt.Println(sommaire2)
@@ -46,6 +49,7 @@ func InfoElfe() {
     
 }
 
+//affiche les infos complémentaires du perso3
 func InfoSorcier() {
     SorcierInfo := []string{"lvl 1     ", "160      ", "80       "}
     fmt.Println(sommaire2)

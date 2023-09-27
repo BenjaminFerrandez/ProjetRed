@@ -5,10 +5,10 @@ import (
     "os"
 )
 
-type Object struct {
-    Name   string
-    Effect string
-    Price  int 
+type Object struct { //caractéristique d'un objet
+    Name   string //nom de l'objet
+    Effect string //ce qu'il fait
+    Price  int  //son prix
 }
 
 var choice string
@@ -20,6 +20,7 @@ var Poison int = 0
 var Upgrade int = 0
 var Shieldd int = 0
 
+//création des objets
 func Obj() {
     Health_potion := []string{"1. Health potion:", "Donne 15HP et coûte 25 $"}
     Poison_potion := []string{"2. Poison potion:", "Enlève 15HP à l'adversaire et coûte 25 $"}
@@ -32,8 +33,8 @@ func Obj() {
     ChoixObj()
 }
 
+//achats des objets et/ou début du jeu
 func ChoixObj() {
-	//ChoixObj()
     fmt.Println("\ng. Go!")
     fmt.Println("i. Show inventaire")
 	fmt.Println("r. Return to previous menu")
@@ -41,128 +42,162 @@ func ChoixObj() {
     fmt.Scanln(&choice)
 	switch choice {
 		case "1":
-		Health_potion() 
+		Health_potion()  //achat d'une potion de vie
 		case "2":
-		Poison_potion() 
+		Poison_potion() //achat d'une potion de poison
 		case "3":
-		Upgrade_potion() 
+		Upgrade_potion()  //achat d'une potion d'amélioration
 		case "4":
-		Shield()
+		Shield() //achat d'un bouclier
         case "g":
       if ChoicePerso== 1{
-        GameTank()
+        GameTank(inventory) //en tant que Tank (perso1)
       } else if ChoicePerso ==2 {
-        GameElfe()
+        GameElfe(inventory) //en tant qu'Elfe (perso2)
       } else if ChoicePerso == 3 {
-        GameSorcier()
+        GameSorcier(inventory)  //en tant que Sorcier (perso3)
       }
         
         case "i":
-        Inventaire()
+        Inventaire() //affiche les objets achetés
         case "r":
-		ChoixPersonne()
+		ChoixPersonne() //retour en arrière
 		case "q":
-		os.Exit(0)
+		os.Exit(0) //Quitter
 		default:
-		fmt.Println("Incorrect choice.")
+		fmt.Println("Incorrect choice.") //Erreur
 		Obj()
 	}
 }
 
-var inventory []Object 
 
-func AddToInventory(item Object) {
-    
-    if len(inventory) < stockmax && coins >= item.Price {
-  
-        for i, invItem := range inventory {
-            if invItem.Name == item.Name {
-                inventory[i].Price += item.Price
-                coins -= item.Price
-                fmt.Printf("You have now %d gold coins and %d %s(s) in your inventory.\n", coins, inventory[i].Price, item.Name)
-                return
+var inventory []Object
+
+
+func GetInventory() []Object {
+    return inventory
+}
+
+//permet d'ajouter à l'inventaire l'objet acheté
+func AddToInventory(inventory []Object, item Object) []Object { 
+    if len(inventory) < stockmax && coins >= item.Price { //vérifie que le stock ne soit pas plein et qu'il y ait assez de pièces pour acheter l'objet
+
+        for i, invItem := range inventory { // vérifie si il y a quelque chose dans l'inventaire
+            if invItem.Name == item.Name {  //si un objet se trouve dans l'inventaire
+                inventory[i].Price += item.Price //augmenter l'inventaire
+                coins -= item.Price //réduire les pièces
+                fmt.Printf("You have now %d gold coins and %d %s in your inventory.\n", coins, inventory[i].Price, item.Name)
+                return inventory
             }
         }
- 
+
         inventory = append(inventory, item)
         coins -= item.Price
-        fmt.Printf("You have now %d gold coins and %s in your inventory.\n", coins, item.Name)
-    } else if len(inventory) >= stockmax {
+    
+    } else if len(inventory) >= stockmax { //pour si l'inventaire est plein
         fmt.Println("No more place in your inventory")
-    } else {
+    } else { //ou si il n'y a pas assez de pièces
         fmt.Println("Not enough coins for this item")
     }
+    return inventory
 }
 
-func ShowInventory() {
-    fmt.Println("\nYour inventory:")
-    for _, invItem := range inventory {
-        fmt.Printf("%s (%d $)\n", invItem.Name, invItem.Price)
+
+
+
+//permet d'ajouter une potion de vie dans l'inventaire
+func Health_potion() {
+    if stock == stockmax {
+        fmt.Println("No more place in your inventory")
+        Obj()
+    } else if coins < 25 {
+        fmt.Println("Not enough coins for this item")
+        Obj()
+    } else {
+
+    item := Object{Name: "Health potion", Effect: "Heal", Price: 25}
+    inventory = AddToInventory(inventory, item)
+   
+        stock = stock + 1
+        Health = Health + 1
+        fmt.Println("You have now",  coins, "gold coins and", stock, "item on", stockmax)
+        Obj()
     }
 }
 
-
-func Health_potion() {
-    item := Object{Name: "Health potion", Effect: "Heal", Price: 25}
-   
-    AddToInventory(item)
-    Obj()
-}
-
+//permet d'ajouter une potion de poison dans l'inventaire
 func Poison_potion() {
-    item := Object{Name: "Poison potion", Effect: "Poison", Price: 25}
-  
-    AddToInventory(item)
-    Obj()
+    if stock == stockmax {
+        fmt.Println("No more place in your inventory")
+        Obj()
+    } else if coins < 25 {
+        fmt.Println("Not enough coins for this item")
+        Obj()
+    } else {
+        item := Object{Name: "Poison potion", Effect: "Poison", Price: 25}
+        inventory = AddToInventory(inventory, item)
+     
+        stock = stock + 1
+        Poison = Poison + 1
+        fmt.Println("You have now",  coins, "gold coins and", stock, "item on", stockmax)
+        Obj()
+    }
 }
 
+//permet d'ajouter une potion d'amélioration dans l'inventaire
 func Upgrade_potion() {
-    item := Object{Name: "Upgrade potion", Effect: "Upgrade", Price: 50}
- 
-    AddToInventory(item)
-    Obj()
+    if stock == stockmax {
+        fmt.Println("No more place in your inventory")
+        Obj()
+    } else if coins < 50 {
+        fmt.Println("Not enough coins for this item")
+        Obj()
+    } else {
+        item := Object{Name: "Upgrade potion", Effect: "Upgrade", Price: 50}
+        inventory = AddToInventory(inventory, item)
+     
+        stock = stock + 1
+        Upgrade = Upgrade + 1
+        fmt.Println("You have now",  coins, "gold coins and", stock, "item on", stockmax)
+        Obj()
+    }
 }
 
+//permet d'ajouter un bouclier dans l'inventaire
 func Shield() {
-    item := Object{Name: "Shield", Effect: "Shield", Price: 40}
-  
-    AddToInventory(item)
-    Obj()
-}
+    if stock == stockmax {
+        fmt.Println("No more place in your inventory")
+        Obj()
+    } else if coins < 40 {
+        fmt.Println("Not enough coins for this item")
+        Obj()
+        } else {
 
+        item := Object{Name: "Shield", Effect: "Reduit Degat", Price: 40}
+        inventory = AddToInventory(inventory, item)
+     
+        stock = stock + 1
+        Shieldd = Shieldd + 1
+        fmt.Println("You have now",  coins, "gold coins and", stock, "item on", stockmax)
+        Obj()
+    }
+}
 func Inventaire() {
-    a := Health
-    b := Poison
-    c := Upgrade
-    d := Shield
     fmt.Println("\nYou have:")
     for i := 0; i <= stock-1; i++ {
-        if a != 0 {
-            fmt.Println(a, "health potion")
-            a = 0
-        } else if b != 0 {
-            fmt.Println(b, "poison potion")
-            b = 0
-        } else if c != 0 {
-            fmt.Println(c, "upgrade potion")
-            c = 0
-        } else if d != 0 {
-            fmt.Println(d, "shield")
-            d = 0
+        if Health != 0 {
+            fmt.Println(Health, "health potion")
+            Health = 0
+        } else if Poison != 0 {
+            fmt.Println(Poison, "poison potion")
+            Poison = 0
+        } else if Upgrade != 0 {
+            fmt.Println(Upgrade, "upgrade potion")
+            Upgrade = 0
+        } else if Shieldd != 0 {
+            fmt.Println(Shieldd, "shield")
+            Shieldd = 0
         }
     }
     Obj()
-}
-
-//yanisse
-func stocage () {
-    if Health != 0 {
-        stock += 1
-    } else if Poison != 0 {
-        stock += 1
-    } else if Upgrade != 0 {
-        stock += 1
-    } else if Shieldd != 0 {
-        stock += 1
-    }
 }
