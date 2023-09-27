@@ -106,7 +106,11 @@ func GameTank(inventory []Object) {
                 enemy.Health -= 15
                 fmt.Printf("\nYou used %s and dealt %d damage to the enemy!\n", usedItem.Name, 15)
             case "Upgrade":
-                enemy.Health -= 25*1.2
+               playerAttack := attack1
+               playerAttack.Damage = int(float64(playerAttack.Damage)*1.2)
+               enemyDamage := playerAttack.Damage
+               enemy.Health -= enemyDamage
+               fmt.Printf("\nYou used %s and did %d damage to the enemy!\n", usedItem.Name, enemyDamage)
             case "Shield":
                 player.Health += usedItem.Price
                 fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
@@ -137,3 +141,4 @@ func GameTank(inventory []Object) {
 
     fmt.Println("Game over.")
 }
+

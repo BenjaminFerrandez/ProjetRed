@@ -66,7 +66,7 @@ func submenu_perso1() {
 	switch Choice {
 		case "s":
 			ChoicePerso = 1
-		submenu_inventaire() //commencer le jeu avec le perso1
+		Obj() //commencer le jeu avec le perso1
 		case "r":
 		submenu1() //retour en arrière
 		case "q":
@@ -89,7 +89,7 @@ func submenu_perso2() {
 	switch Choice {
 		case "s":
 			ChoicePerso = 2
-		submenu_inventaire()  //commencer le jeu avec le perso2
+		Obj()  //commencer le jeu avec le perso2
 		case "r":
 		submenu1() //retour en arrière
 		case "q":
@@ -112,7 +112,7 @@ func submenu_perso3() {
 	switch Choice {
 		case "s":
 			ChoicePerso = 3
-		submenu_inventaire()  //commencer le jeu avec le perso3
+		Obj()  //commencer le jeu avec le perso3
 		case "r":
 		submenu1() //retour en arrière
 		case "q":
@@ -123,13 +123,3 @@ func submenu_perso3() {
 	}
 }
 
-//initialisation de l'inventaire
-func submenu_inventaire() {
-	var coins int = 100 //on démarre avec 100 pièces,
-    var stock int = 0 // 0 objet
-    var stockmax int = 5 // et on peut avoir 5 objet au maximum
-    fmt.Println("\nI N V E N T O R Y")
-    fmt.Println("You have", coins, "gold coins and", stock, "item on", stockmax)
-	fmt.Print("\n")
-	Obj() // affiche la liste des objets du jeu
-}
