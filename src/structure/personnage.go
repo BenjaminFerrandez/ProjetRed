@@ -18,7 +18,7 @@ type Perso struct {  //caractéristique d'un personnage
 //affiche les noms et classe des personnages
 func ChoixPersonne() {
     sommaire1 := []string{"   Name:     ", "Class:"}
-    sommaire2 = []string{"Level :  ", "HPmax :  ", "HPact :  "}
+    sommaire2 = []string{"HPmax :  ", "HPact :  "}
     Tank := []string{"1. Tenace   ", "   Tank"}
     Elfe := []string{"2. Chiro    ", "   Elfe"}
     Sorcier := []string{"3. Reicros  ", "Sorcier"}
@@ -30,7 +30,7 @@ func ChoixPersonne() {
 
 //affiche les infos complémentaires du perso1
 func InfoTank() {
-    TankInfo := []string{"lvl 1     ", "200      ", "100     "}
+    TankInfo := []string{"200      ", "100     "}
     fmt.Print("      ")
     fmt.Println(sommaire2)
     fmt.Print("      ")
@@ -42,7 +42,7 @@ func InfoTank() {
 
 //affiche les infos complémentaires du perso2
 func InfoElfe() {
-    ElfeInfo := []string{"lvl 1     ", "140      ", "70       "}
+    ElfeInfo := []string{"160      ", "80       "}
     fmt.Println(sommaire2)
     fmt.Println(ElfeInfo)
     AttackElfe()
@@ -51,7 +51,7 @@ func InfoElfe() {
 
 //affiche les infos complémentaires du perso3
 func InfoSorcier() {
-    SorcierInfo := []string{"lvl 1     ", "160      ", "80       "}
+    SorcierInfo := []string{"180      ", "90       "}
     fmt.Println(sommaire2)
     fmt.Println(SorcierInfo)
     AttackSorcier()

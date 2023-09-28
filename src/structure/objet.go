@@ -9,6 +9,8 @@ type Object struct { //caractéristique d'un objet
     Name   string //nom de l'objet
     Effect string //ce qu'il fait
     Price  int  //son prix
+    Sentence string
+    Stock int
 }
 
 var choice string
@@ -29,10 +31,10 @@ func Obj() {
     fmt.Println("You have", coins, "gold coins and", stock, "item on", stockmax)
 	fmt.Print("\n")
 
-    Health_potion := []string{"1. Health potion:", "Donne 15HP et coûte 25 $"}
-    Poison_potion := []string{"2. Poison potion:", "Enlève 15HP à l'adversaire et coûte 25 $"}
-    Upgrade_potion := []string{"3. Upgrade potion:", "Améliore tes attaques de 20%, sur ton prochain tour et coûte 50 $"}
-    Shield := []string{"4. Shield:", "Réduit les dégâts de 15%, de la prochaine attaque subie et coûte 40 $"}
+    Health_potion := Object{Name: "1. Health potion :", Effect: "Give you 15HP and costs", Price: 25, Sentence: "$. Number of health potion :", Stock: 1}
+    Poison_potion := Object{Name: "2. Poison potion :", Effect: "Enlève 15HP à l'adversaire et coûte", Price: 25, Sentence: "$. Number of poison potion :", Stock: 1}
+    Upgrade_potion := Object{Name: "3. Upgrade potion :", Effect: "Améliore tes attaques de 20%, sur ton prochain tour et coûte", Price: 50, Sentence: "$. Number of upgrade potion :", Stock: 1}
+    Shield :=  Object{Name: "4. Shield :", Effect: "Réduit tes dégats de 15%, de la prochaine attaque subie et coûte", Price: 40, Sentence: "$. Number of shield :", Stock: 1}
    if Health == 0 {
     fmt.Println(Health_potion)
    } 
@@ -161,7 +163,7 @@ func Health_potion() {
     Obj() 
     } else {
 
-    item := Object{Name: "Health potion", Effect: "Heal", Price: 25}
+    item := Object{Name: "Health potion", Effect: "Heal", Price: 25, Stock: 1}
     inventory = AddToInventory(inventory, item)
    
         stock = stock + 1
@@ -180,7 +182,7 @@ func Poison_potion() {
         fmt.Println("Not enough coins for this item")
     Obj() 
     } else {
-        item := Object{Name: "Poison potion", Effect: "Poison", Price: 25}
+        item := Object{Name: "Poison potion", Effect: "Poison", Price: 25, Stock: 1}
         inventory = AddToInventory(inventory, item)
      
         stock = stock + 1
@@ -199,7 +201,7 @@ func Upgrade_potion() {
         fmt.Println("Not enough coins for this item")
     Obj() 
     } else {
-        item := Object{Name: "Upgrade potion", Effect: "Upgrade", Price: 50}
+        item := Object{Name: "Upgrade potion", Effect: "Upgrade", Price: 50, Stock: 1}
         inventory = AddToInventory(inventory, item)
      
         stock = stock + 1
@@ -219,7 +221,7 @@ func Shield() {
     Obj() 
         } else {
 
-        item := Object{Name: "Shield", Effect: "Reduit Degat", Price: 40}
+        item := Object{Name: "Shield", Effect: "Reduit Degat", Price: 40, Stock: 1}
         inventory = AddToInventory(inventory, item)
      
         stock = stock + 1

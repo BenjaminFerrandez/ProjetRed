@@ -4,6 +4,7 @@ import (
     "fmt"
     "math/rand"
     "time"
+    "os"
 )
 
 //caractéristique du perso3
@@ -29,9 +30,13 @@ type InventorySorcier struct {
 func GameSorcier(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
-    player := Sorcier{Name: "Reicros", Health: 100}
+    player := Sorcier{Name: "Reicros", Health: 90}
     enemy := Sorcier{Name: "Enemy", Health: 100}
+    if ValueDeJeu > 1 {
+        enemy.Health += 25
+    }
 
+        //Initialisation du joueur et de l'ennemi
     attack1 := SorcierAttack{Name: "Boule de feu", Damage: 25}
     attack2 := SorcierAttack{Name: "Jet de foudre", Damage: 30}
 
@@ -39,6 +44,7 @@ func GameSorcier(inventory []Object) {
 
     TourDeCombat := 1
 
+        //Boucle de combat principale
     for player.Health > 0 && enemy.Health > 0 {
 
         fmt.Printf("\nTour de combat: %d\n", TourDeCombat)
@@ -120,8 +126,21 @@ func GameSorcier(inventory []Object) {
 
         if enemy.Health <= 0 {
             fmt.Println("You have won!")
+            fmt.Println("\nc. Continue?")
+            fmt.Println("\n q. Quitter")
+            fmt.Scanln(&win)
+            switch win {
+            case "c":
+                ValueDeJeu += 1
+                submenu_perso3()
+            case "q":
+                os.Exit(0)
+            default:
+                fmt.Println("Incorrect choice.")
+            }
             break
         }
+            // Attaque de l'ennemi
 enemyAttack := SorcierAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
         player.Health -= enemyAttack.Damage
         fmt.Printf("Enemy did %d damage to you!\n", enemyAttack.Damage)

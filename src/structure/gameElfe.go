@@ -4,6 +4,7 @@ import (
     "fmt"
     "math/rand"
     "time"
+    "os"
 )
 
 //caractéristique du perso2
@@ -29,12 +30,11 @@ type InventoryElfe struct {
 func GameElfe(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
-    player := Elfe{Name: "Chiro", Health: 100} //nom et points de vie du perso2
+    player := Elfe{Name: "Chiro", Health: 80} //nom et points de vie du perso2
     enemy := Elfe{Name: "Enemy", Health: 100}  //nom et points de vie de l'ennemi
-    //Enemy2 := Elfe{Name: "Enemy1", Health: 125}
-    //Enemy3 := Elfe{Name: "Enemy1", Health: 150}
-    //Enemy4 := Elfe{Name: "Enemy1", Health: 175}
-    //Enemy5 := Elfe{Name: "Enemy1", Health: 200}
+    if ValueDeJeu > 1 {
+        enemy.Health += 25
+    }
     attack1 := ElfeAttack{Name: "Volvi", Damage: 15}
     attack2 := ElfeAttack{Name: "Flèche d'or", Damage: 25}
 
@@ -122,8 +122,21 @@ func GameElfe(inventory []Object) {
 
         if enemy.Health <= 0 {
             fmt.Println("You have won!")
+            fmt.Println("\nc. Continue?")
+            fmt.Println("\n q. Quitter")
+            fmt.Scanln(&win)
+            switch win {
+            case "c":
+                ValueDeJeu += 1
+                submenu_perso2()
+            case "q":
+                os.Exit(0)
+            default:
+                fmt.Println("Incorrect choice.")
+            }
             break
         }
+        // Attaque de l'ennemi
 enemyAttack := ElfeAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
         player.Health -= enemyAttack.Damage
         fmt.Printf("Enemy did %d damage to you!\n", enemyAttack.Damage)
