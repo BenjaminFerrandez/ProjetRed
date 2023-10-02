@@ -31,35 +31,34 @@ func GameSorcier(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
     player := Sorcier{Name: "Reicros", Health: 90}
-    enemy := Sorcier{Name: "Enemy", Health: 100}
+    enemy := Sorcier{Name: "Enemy", Health: 75}
+
     if ValueDeJeu > 1 {
         enemy.Health += 25
     }
 
-        //Initialisation du joueur et de l'ennemi
-    attack1 := SorcierAttack{Name: "Boule de feu", Damage: 25}
-    attack2 := SorcierAttack{Name: "Jet de foudre", Damage: 30}
+    attack1 := SorcierAttack{Name: "Fireball ", Damage: 20}
+    attack2 := SorcierAttack{Name: "Lightning", Damage: 30}
 
     fmt.Println("Welcome to game!")
-
+    
     TourDeCombat := 1
 
-        //Boucle de combat principale
     for player.Health > 0 && enemy.Health > 0 {
 
-        fmt.Printf("\nTour de combat: %d\n", TourDeCombat)
+        fmt.Printf("\nRound: %d\n", TourDeCombat)
         fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", player.Name, player.Health, enemy.Name, enemy.Health)
-        var choice int
-        if len(inventory) == 0 {
-            fmt.Println("You have no items left.")
-            choice = 1
-        } else {
-            fmt.Println("Choose action:")
-            fmt.Println("1. Attack")
-            fmt.Println("2. Use item")
-            fmt.Print("Enter your choice: ")
-            fmt.Scanln(&choice)
-        }
+       var choice int
+if len(inventory) == 0 {
+    fmt.Println("You have no items left.")
+    choice = 1 
+} else {
+    fmt.Println("Choose action:")
+    fmt.Println("1. Attack")
+    fmt.Println("2. Use item")
+    fmt.Print("Enter your choice: ")
+    fmt.Scanln(&choice)
+}
 
         switch choice {
         case 1: //1 = attaquer
@@ -72,22 +71,28 @@ func GameSorcier(inventory []Object) {
             fmt.Scanln(&attackChoice)
 
             var playerAttack SorcierAttack
+            var enemyDamage int
             switch attackChoice {
-            case 1: //1.1 = attaque 1
-                playerAttack = attack1
-            case 2: //1.2 = attaque 2
-                playerAttack = attack2
-            default:
-                fmt.Println("Incorrect choice of attack.")
-                continue
-            }
-
-            enemyDamage := rand.Intn(playerAttack.Damage)
+                case 1: //1.1 = attaque 1
+                    playerAttack = attack1
+                    enemyDamage = playerAttack.Damage
+                case 2: //1.2 = attaque 2
+                    if rand.Float64() < 0.6 {
+                        playerAttack = attack2
+                        enemyDamage = attack2.Damage
+                    } else {
+                        enemyDamage = rand.Intn(attack2.Damage)
+                    }
+                default:
+                    fmt.Println("Incorrect choice of attack.")
+                    continue
+                }
+        
             enemy.Health -= enemyDamage
             fmt.Printf("\nYou did %d damage to enemy!\n", enemyDamage)
 
         case 2: //2 = utiliser un objet
-          //a revoir
+            //a revoir
             fmt.Println("Choose item to use:")
             for i, item := range inventory {
                 fmt.Printf("%d. %s\n", i+1, item.Name)
@@ -106,52 +111,62 @@ func GameSorcier(inventory []Object) {
             switch usedItem.Effect {
             case "Heal":
                 player.Health += usedItem.Price
-                fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, usedItem.Price)
+                fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 15)
             case "Poison":
                 enemy.Health -= usedItem.Price
-                fmt.Printf("\nYou used %s and dealt %d damage to the enemy!\n", usedItem.Name, usedItem.Price)
+                fmt.Printf("\nYou used %s and dealt %d damage to the enemy!\n", usedItem.Name, 15)
             case "Upgrade":
-              
+                playerAttack := attack1
+                playerAttack.Damage = int(float64(playerAttack.Damage) * 1.2)
+                enemyDamage := rand.Intn(playerAttack.Damage)
+                enemy.Health -= enemyDamage
+                fmt.Printf("\nYou used %s and did %d damage to the enemy!\n", usedItem.Name, enemyDamage)
             case "Shield":
                 player.Health += usedItem.Price
                 fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
             }
-
             inventory = append(inventory[:itemChoice-1], inventory[itemChoice:]...)
-
         default:
             fmt.Println("Incorrect choice.")
             continue
         }
 
         if enemy.Health <= 0 {
-            fmt.Println("You have won!")
-            fmt.Println("\nc. Continue?")
-            fmt.Println("\n q. Quitter")
-            fmt.Scanln(&win)
-            switch win {
-            case "c":
-                ValueDeJeu += 1
-                submenu_perso3()
-            case "q":
-                os.Exit(0)
-            default:
-                fmt.Println("Incorrect choice.")
-            }
-            break
+            victorySorcier()
         }
-            // Attaque de l'ennemi
-enemyAttack := SorcierAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
+
+        enemyAttack := SorcierAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
         player.Health -= enemyAttack.Damage
         fmt.Printf("Enemy did %d damage to you!\n", enemyAttack.Damage)
 
         if player.Health <= 0 {
-            fmt.Println("Enemy has won.")
-            break
+            loseSorcier()
         }
-
         TourDeCombat++
     }
-
     fmt.Println("Game over.")
+}
+
+//relance une partie si on a gagné la précédente
+func victorySorcier() {
+    fmt.Println("You have won!")
+    fmt.Println("Next game ?")
+    fmt.Println("Yes. continue")
+    fmt.Println("No. quit game")
+    fmt.Scanln(&win)
+    switch win {
+        case "Yes":
+            ValueDeJeu += 1 
+            submenu_perso3()
+        case "No":
+            os.Exit(0)
+        default:
+            fmt.Println("Incorrect choice")
+            victoryElfe()
+    }
+}
+
+func loseSorcier() {
+    fmt.Println("Enemy has won.")
+    //suite
 }

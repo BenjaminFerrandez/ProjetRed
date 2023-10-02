@@ -1,14 +1,12 @@
 package structure
 
-import ("fmt"
+import "fmt"
 
-)
 var sommaire2 []string
 
-type Perso struct {  //caractéristique d'un personnage
+type Perso struct { //caractéristique d'un personnage
     Name string //son nom
     Class string //sa classe
-    Level int //son niveau
     HPmax int //point de vie maximum
     HPact int //point de vie de départ
     Inventory int //inventaire
@@ -43,18 +41,22 @@ func InfoTank() {
 //affiche les infos complémentaires du perso2
 func InfoElfe() {
     ElfeInfo := []string{"160      ", "80       "}
+    fmt.Print("      ")
     fmt.Println(sommaire2)
+    fmt.Print("      ")
     fmt.Println(ElfeInfo)
+    fmt.Print("")
     AttackElfe()
-    
+
 }
 
 //affiche les infos complémentaires du perso3
 func InfoSorcier() {
     SorcierInfo := []string{"180      ", "90       "}
+    fmt.Print("      ")
     fmt.Println(sommaire2)
+    fmt.Print("      ")
     fmt.Println(SorcierInfo)
+    fmt.Print("")
     AttackSorcier()
 }
-
-

@@ -1,15 +1,15 @@
 package structure
 
 import (
-		"fmt"
-		"os"
+	"fmt"
+	
+	"os"
 )
 
 type Enemy struct {
-	Name string
-	Health int
+    Name string
+    Health int
 }
-
 
 //choix du personnage
 func submenu1() {
@@ -17,22 +17,22 @@ func submenu1() {
 	ChoixPersonne() //affiche les noms et classe de chaque personnages
 	fmt.Println("\n r. Return to Main Menu")
 	fmt.Println(" q. Quit game")
-	
+
 	fmt.Scanln(&Choice)
 	switch Choice {
 		case "1":
-		submenu_perso1() //perso1
+			submenu_perso1() //perso1
 		case "2":
-		submenu_perso2() //perso2
+			submenu_perso2() //perso2
 		case "3":
-		submenu_perso3() //perso3
+			submenu_perso3() //perso3
 		case "r":
-		Start() //retour en arrière
+			Start() //retour en arrière
 		case "q":
-		os.Exit(0) //Quitter
+			os.Exit(0) //Quitter
 		default:
-		fmt.Println("Incorrect Choice.")
-		submenu1() //choix incorrect
+			fmt.Println("Incorrect Choice.")
+			submenu1() //choix incorrect
 	}
 }
 
@@ -48,14 +48,14 @@ func submenu_perso1() {
 	switch Choice {
 		case "s":
 			ChoicePerso = 1
-		Obj() //commencer le jeu avec le perso1
+			Obj() //commencer le jeu avec le perso1
 		case "r":
-		submenu1() //retour en arrière
+			submenu1() //retour en arrière
 		case "q":
-		os.Exit(0) //Quitter
+			os.Exit(0) //Quitter
 		default:
-		fmt.Println("Incorrect Choice.")
-		submenu_perso1() //choix incorrect
+			fmt.Println("Incorrect Choice.")
+			submenu_perso1() //choix incorrect
 	}
 }
 
@@ -66,19 +66,19 @@ func submenu_perso2() {
 	fmt.Println("\ns. Start game as Elfe")
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
-	
+
 	fmt.Scanln(&Choice)
 	switch Choice {
 		case "s":
 			ChoicePerso = 2
-		Obj()  //commencer le jeu avec le perso2
+			Obj() //commencer le jeu avec le perso2
 		case "r":
-		submenu1() //retour en arrière
+			submenu1() //retour en arrière
 		case "q":
-		os.Exit(0) //Quitter
+			os.Exit(0) //Quitter
 		default:
-		fmt.Println("Incorrect Choice.")
-		submenu_perso2() //choix incorrect
+			fmt.Println("Incorrect Choice.")
+			submenu_perso2() //choix incorrect
 	}
 }
 
@@ -94,14 +94,13 @@ func submenu_perso3() {
 	switch Choice {
 		case "s":
 			ChoicePerso = 3
-		Obj()  //commencer le jeu avec le perso3
+			Obj() //commencer le jeu avec le perso3
 		case "r":
-		submenu1() //retour en arrière
+			submenu1() //retour en arrière
 		case "q":
-		os.Exit(0) //Quitter
+			os.Exit(0) //Quitter
 		default:
-		fmt.Println("Incorrect Choice.") //choix incorrect
-		submenu_perso3() 
+			fmt.Println("Incorrect Choice.")
+			submenu_perso3() //choix incorrect
 	}
 }
-
