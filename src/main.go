@@ -2,20 +2,31 @@ package main
 
 import ("fmt"
     "game/structure" //permet l'accès aux fichiers du dossier structure
-
+    "golang.org/x/image/font"
     "github.com/hajimehoshi/ebiten"
+
 )
 const (
-    screenWidth  = 800
-    screenHeight = 600
+    screenWidth  = 1024     
+    screenHeight = 768
 )
-var screen *ebiten.Image
+
+var (
+    screen *ebiten.Image
+    backgroundImg *ebiten.Image 
+    gameStarted bool
+    startScreenText string
+    Font font.Face
+
+)
 //première fonction lancée
+
+
 func main() {
     for {
         ebiten.Run(history, screenWidth, screenHeight, 1, "Death Back")
       
-        fmt.Println("D E A T H   B A C K") //titre
+
  
  
 
