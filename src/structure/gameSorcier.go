@@ -152,7 +152,7 @@ if len(inventory) == 0 {
 func victorySorcier() {
     fmt.Println("You have won!")
     enemySorcier.Health =75
-    playerTank.Health=100
+    playerSorcier.Health=100
     ValueDeSorcier++
     if ValueDeSorcier == 1 {
         enemySorcier.Health =100

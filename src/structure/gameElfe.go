@@ -150,7 +150,7 @@ func GameElfe(inventory []Object) {
 func victoryElfe () {
     fmt.Println("You have won!")
     enemyElfe.Health =75
-    playerTank.Health=80
+    playerElfe.Health=80
     ValueDeElfe++
     if ValueDeElfe == 1 {
         enemyElfe.Health =100
