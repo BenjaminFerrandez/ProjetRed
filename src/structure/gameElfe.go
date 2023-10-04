@@ -25,8 +25,8 @@ type InventoryElfe struct {
     EffectType string //son type
     Value      int 
 }
-var (enemyElfe = Tank{Name: "Enemy", Health: 75}  //nom et points de vie de l'ennemi
-    playerElfe = Tank{Name: "Chiro", Health: 80} //nom et points de vie du perso2 
+var (enemyElfe = Elfe{Name: "Enemy", Health: 75}  //nom et points de vie de l'ennemi
+    playerElfe = Elfe{Name: "Chiro", Health: 80} //nom et points de vie du perso2 
     ValueDeElfe int
     WinDeElfe string
 )

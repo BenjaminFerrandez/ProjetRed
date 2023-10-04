@@ -25,8 +25,8 @@ type InventorySorcier struct {
     EffectType string //son type
     Value      int
 }
-var (enemySorcier = Tank{Name: "Enemy", Health: 75}//nom et points de vie du perso3
-    playerSorcier = Tank{Name: "Reicros", Health: 90}//nom et points de vie de l'ennemi
+var (enemySorcier = Sorcier{Name: "Enemy", Health: 75}//nom et points de vie du perso3
+    playerSorcier = Sorcier{Name: "Reicros", Health: 90}//nom et points de vie de l'ennemi
     ValueDeSorcier int
     WinDeSorcier string
 )

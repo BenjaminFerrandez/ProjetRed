@@ -215,7 +215,7 @@ func Shield() {
     Obj() 
         } else {
 
-        item := Object{Name: "Helmet", Effect: "Give HP", Price: 40, Stock: 1}
+        item := Object{Name: "Shield", Effect: "Give HP", Price: 40, Stock: 1}
         inventory = AddToInventory(inventory, item)
      
         stock = stock + 1
