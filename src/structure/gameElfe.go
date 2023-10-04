@@ -40,6 +40,7 @@ func GameElfe(inventory []Object) {
         playerElfe.Health = 80
         enemyElfe.Health = 75
         DefeatElfe = 0
+        ValueDeElfe = 0
     }
    
     
@@ -185,14 +186,14 @@ func victoryElfe () {
     }
     }
     fmt.Println("Next game ?")
-    fmt.Println("Yes. continue")
-    fmt.Println("No. quit game")
+    fmt.Println("y. continue")
+    fmt.Println("n. quit game")
     fmt.Scanln(&WinDeElfe)
     switch WinDeElfe {
-        case "Yes":
+        case "y":
             
            submenu_perso2()
-        case "No":
+        case "n":
             os.Exit(0)
         default:
             fmt.Println("Incorrect choice")

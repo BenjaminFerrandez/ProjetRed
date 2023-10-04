@@ -42,6 +42,7 @@ func GameTank(inventory []Object) {
         playerTank.Health = 80
         enemyTank.Health = 75
         DefeatTank = 0
+        ValueDeTank = 0
     }
    
 
@@ -191,14 +192,14 @@ func victoryTank() {
     }
     }
     fmt.Println("Next game ?")
-    fmt.Println("Yes. continue")
-    fmt.Println("No. quit game")
+    fmt.Println("y. continue")
+    fmt.Println("n. quit game")
     fmt.Scanln(&WinDeTank)
     switch WinDeTank {
-        case "Yes":
+        case "y":
             
            submenu_perso1()
-        case "No":
+        case "n":
             os.Exit(0)
         default:
             fmt.Println("Incorrect choice")

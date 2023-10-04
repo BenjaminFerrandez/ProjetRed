@@ -41,6 +41,7 @@ func GameSorcier(inventory []Object) {
         playerSorcier.Health = 90
         enemySorcier.Health = 75
         DefeatSorcier = 0
+        ValueDeSorcier = 0
     }
   
     attack1 := SorcierAttack{Name: "Fireball ", Damage: 20}
@@ -186,14 +187,14 @@ func victorySorcier() {
     }
     }
     fmt.Println("Next game ?")
-    fmt.Println("Yes. continue")
-    fmt.Println("No. quit game")
+    fmt.Println("y. continue")
+    fmt.Println("n. quit game")
     fmt.Scanln(&WinDeSorcier)
     switch WinDeSorcier {
-        case "Yes":
+        case "y":
             
            submenu_perso3()
-        case "No":
+        case "n":
             os.Exit(0)
         default:
             fmt.Println("Incorrect choice")
