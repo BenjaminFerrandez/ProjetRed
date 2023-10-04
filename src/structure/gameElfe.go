@@ -25,6 +25,7 @@ type InventoryElfe struct {
     EffectType string //son type
     Value      int 
 }
+
 var (enemyElfe = Elfe{Name: "Enemy", Health: 75}  //nom et points de vie de l'ennemi
     playerElfe = Elfe{Name: "Chiro", Health: 80} //nom et points de vie du perso2 
     ValueDeElfe int
@@ -107,7 +108,7 @@ func GameElfe(inventory []Object) {
         fmt.Print("Enter number of item: ")
         fmt.Scanln(&itemChoice)
 
-        if itemChoice < 1 || itemChoice > len(inventory) {
+        if itemChoice < 1 || itemChoice > len(inventory){
             fmt.Println("Incorrect choice of item.")
             continue
         }
@@ -130,6 +131,7 @@ func GameElfe(inventory []Object) {
             playerElfe.Health += usedItem.Price
             fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
         }
+      
         inventory = append(inventory[:itemChoice-1], inventory[itemChoice:]...)
         default:
             fmt.Println("Incorrect choice.")
@@ -157,7 +159,7 @@ func victoryElfe () {
     fmt.Println("You have won!")
     enemyElfe.Health =75
     playerElfe.Health=80
-    ValueDeElfe++
+    
     if ValueDeElfe == 1 {
         enemyElfe.Health =100
        
@@ -177,6 +179,7 @@ func victoryElfe () {
     switch WinDeElfe {
         case "r":
             
+            
            Start()
         case "q":
             os.Exit(0)
@@ -191,7 +194,14 @@ func victoryElfe () {
     fmt.Scanln(&WinDeElfe)
     switch WinDeElfe {
         case "y":
-            
+            ValueDeElfe++
+            inventory = []Object{}
+            Health = 0
+            Poison = 0
+            Upgrade = 0
+            Shieldd = 0
+            stock = 0
+            Coins = 100
            submenu_perso2()
         case "n":
             os.Exit(0)

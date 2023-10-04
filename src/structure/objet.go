@@ -11,6 +11,7 @@ type Object struct { //caractéristique d'un objet
     Price  int //son prix
     Sentence string //phrase en plus pour mettre tout ensemble
     Stock int //stock
+    Used       bool
 }
 
 var choice string

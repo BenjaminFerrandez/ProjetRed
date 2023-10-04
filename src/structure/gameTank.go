@@ -197,7 +197,14 @@ func victoryTank() {
     fmt.Scanln(&WinDeTank)
     switch WinDeTank {
         case "y":
-            
+            ValueDeElfe++
+            inventory = []Object{}
+            Health = 0
+            Poison = 0
+            Upgrade = 0
+            Shieldd = 0
+            stock = 0
+            Coins = 100
            submenu_perso1()
         case "n":
             os.Exit(0)

@@ -159,7 +159,7 @@ func victorySorcier() {
     fmt.Println("You have won!")
     enemySorcier.Health =75
     playerSorcier.Health=100
-    ValueDeSorcier++
+   
     if ValueDeSorcier == 1 {
         enemySorcier.Health =100
        
@@ -192,7 +192,14 @@ func victorySorcier() {
     fmt.Scanln(&WinDeSorcier)
     switch WinDeSorcier {
         case "y":
-            
+            ValueDeElfe++
+            inventory = []Object{}
+            Health = 0
+            Poison = 0
+            Upgrade = 0
+            Shieldd = 0
+            stock = 0
+            Coins = 100
            submenu_perso3()
         case "n":
             os.Exit(0)
