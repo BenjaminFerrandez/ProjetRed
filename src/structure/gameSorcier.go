@@ -40,6 +40,7 @@ func GameSorcier(inventory []Object) {
     if DefeatSorcier!=0 {
         playerSorcier.Health = 90
         enemySorcier.Health = 75
+        DefeatSorcier = 0
     }
   
     attack1 := SorcierAttack{Name: "Fireball ", Damage: 20}

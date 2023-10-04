@@ -39,6 +39,7 @@ func GameElfe(inventory []Object) {
     if DefeatElfe!=0 {
         playerElfe.Health = 80
         enemyElfe.Health = 75
+        DefeatElfe = 0
     }
    
     

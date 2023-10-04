@@ -41,6 +41,7 @@ func GameTank(inventory []Object) {
     if DefeatTank!=0 {
         playerTank.Health = 80
         enemyTank.Health = 75
+        DefeatTank = 0
     }
    
 
