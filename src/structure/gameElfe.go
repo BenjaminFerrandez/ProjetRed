@@ -28,6 +28,7 @@ type InventoryElfe struct {
 var (enemyElfe = Elfe{Name: "Enemy", Health: 75}  //nom et points de vie de l'ennemi
     playerElfe = Elfe{Name: "Chiro", Health: 80} //nom et points de vie du perso2 
     ValueDeElfe int
+    DefeatElfe int
     WinDeElfe string
 )
 //initialisation du combat en tant que perso2
@@ -35,7 +36,10 @@ func GameElfe(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
 
-
+    if DefeatElfe!=0 {
+        playerElfe.Health = 80
+        enemyElfe.Health = 75
+    }
    
     
     attack1 := ElfeAttack{Name: "Life thief ", Damage: 15}
@@ -161,6 +165,7 @@ func victoryElfe () {
     }else if ValueDeElfe == 3 {
         enemyElfe.Health = 150
     } else if ValueDeElfe == 4{
+        ValueDeElfe = 0
         fmt.Println("\nYou've saved our world !")
         fmt.Println("Congratulations, you've just completed the game.")
     
@@ -196,6 +201,7 @@ func victoryElfe () {
 
 func loseElfe() {
     fmt.Println("Enemy has won.")
+    DefeatElfe++
     Start()
     //suite
 }

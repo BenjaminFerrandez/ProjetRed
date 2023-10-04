@@ -28,6 +28,7 @@ type InventorySorcier struct {
 var (enemySorcier = Sorcier{Name: "Enemy", Health: 75}//nom et points de vie du perso3
     playerSorcier = Sorcier{Name: "Reicros", Health: 90}//nom et points de vie de l'ennemi
     ValueDeSorcier int
+    DefeatSorcier int
     WinDeSorcier string
 )
 
@@ -36,7 +37,10 @@ func GameSorcier(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
    
-
+    if DefeatSorcier!=0 {
+        playerSorcier.Health = 90
+        enemySorcier.Health = 75
+    }
   
     attack1 := SorcierAttack{Name: "Fireball ", Damage: 20}
     attack2 := SorcierAttack{Name: "Lightning", Damage: 30}
@@ -198,6 +202,7 @@ func victorySorcier() {
 
 func loseSorcier() {
     fmt.Println("Enemy has won.")
+    DefeatSorcier++
     Start()
     //suite
 }

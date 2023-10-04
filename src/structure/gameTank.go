@@ -28,6 +28,7 @@ type InventoryTank struct {
 var (enemyTank = Tank{Name: "Enemy", Health: 75}//nom et points de vie de l'ennemi
     playerTank = Tank{Name: "Tenace", Health: 100} //nom et points de vie du perso1
     ValueDeTank int
+    DefeatTank int
     WinDeTank string
 )
 
@@ -37,7 +38,11 @@ func GameTank(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
   
- 
+    if DefeatTank!=0 {
+        playerTank.Health = 80
+        enemyTank.Health = 75
+    }
+   
 
  
 
@@ -202,6 +207,7 @@ func victoryTank() {
 
 func loseTank() {
     fmt.Println("Enemy has won.")
+    DefeatTank++
     Start()
     //suite
 }
