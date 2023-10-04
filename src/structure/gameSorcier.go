@@ -25,18 +25,19 @@ type InventorySorcier struct {
     EffectType string //son type
     Value      int
 }
+var (enemySorcier = Tank{Name: "Enemy", Health: 75}//nom et points de vie du perso3
+    playerSorcier = Tank{Name: "Reicros", Health: 90}//nom et points de vie de l'ennemi
+    ValueDeSorcier int
+    WinDeSorcier string
+)
 
 //début du combat en tant que perso3
 func GameSorcier(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
-    player := Sorcier{Name: "Reicros", Health: 90}
-    enemy := Sorcier{Name: "Enemy", Health: 75}
+   
 
-    if ValueDeJeu > 1 {
-        enemy.Health += 25
-    }
-
+  
     attack1 := SorcierAttack{Name: "Fireball ", Damage: 20}
     attack2 := SorcierAttack{Name: "Lightning", Damage: 30}
 
@@ -44,10 +45,10 @@ func GameSorcier(inventory []Object) {
     
     TourDeCombat := 1
 
-    for player.Health > 0 && enemy.Health > 0 {
+    for playerSorcier.Health > 0 && enemySorcier.Health > 0 {
 
         fmt.Printf("\nRound: %d\n", TourDeCombat)
-        fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", player.Name, player.Health, enemy.Name, enemy.Health)
+        fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", playerSorcier.Name, playerSorcier.Health, enemySorcier.Name, enemySorcier.Health)
        var choice int
 if len(inventory) == 0 {
     fmt.Println("You have no items left.")
@@ -88,7 +89,7 @@ if len(inventory) == 0 {
                     continue
                 }
         
-            enemy.Health -= enemyDamage
+            enemySorcier.Health -= enemyDamage
             fmt.Printf("\nYou did %d damage to enemy!\n", enemyDamage)
 
         case 2: //2 = utiliser un objet
@@ -110,19 +111,19 @@ if len(inventory) == 0 {
             usedItem := inventory[itemChoice-1]
             switch usedItem.Effect {
             case "Heal":
-                player.Health += usedItem.Price
+                playerSorcier.Health += usedItem.Price
                 fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 15)
             case "Poison":
-                enemy.Health -= usedItem.Price
+                enemySorcier.Health -= usedItem.Price
                 fmt.Printf("\nYou used %s and dealt %d damage to the enemy!\n", usedItem.Name, 15)
             case "Upgrade":
                 playerAttack := attack1
                 playerAttack.Damage = int(float64(playerAttack.Damage) * 1.2)
                 enemyDamage := rand.Intn(playerAttack.Damage)
-                enemy.Health -= enemyDamage
+                enemySorcier.Health -= enemyDamage
                 fmt.Printf("\nYou used %s and did %d damage to the enemy!\n", usedItem.Name, enemyDamage)
             case "Shield":
-                player.Health += usedItem.Price
+                playerSorcier.Health += usedItem.Price
                 fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
             }
             inventory = append(inventory[:itemChoice-1], inventory[itemChoice:]...)
@@ -131,15 +132,15 @@ if len(inventory) == 0 {
             continue
         }
 
-        if enemy.Health <= 0 {
+        if enemySorcier.Health <= 0 {
             victorySorcier()
         }
 
         enemyAttack := SorcierAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
-        player.Health -= enemyAttack.Damage
+        playerSorcier.Health -= enemyAttack.Damage
         fmt.Printf("Enemy did %d damage to you!\n", enemyAttack.Damage)
 
-        if player.Health <= 0 {
+        if playerSorcier.Health <= 0 {
             loseSorcier()
         }
         TourDeCombat++
@@ -150,23 +151,53 @@ if len(inventory) == 0 {
 //relance une partie si on a gagné la précédente
 func victorySorcier() {
     fmt.Println("You have won!")
+    enemySorcier.Health =75
+    playerTank.Health=100
+    ValueDeSorcier++
+    if ValueDeSorcier == 1 {
+        enemySorcier.Health =100
+       
+    } else if ValueDeSorcier == 2 {
+        enemySorcier.Health =125
+       
+    }else if ValueDeSorcier == 3 {
+        enemySorcier.Health = 150
+    } else if ValueDeSorcier == 4{
+        fmt.Println("\nYou've saved our world !")
+        fmt.Println("Congratulations, you've just completed the game.")
+    
+    fmt.Println("\nr. Restart a new game")
+    fmt.Println("q. quit game")
+    fmt.Scanln(&WinDeSorcier)
+    switch WinDeSorcier {
+        case "r":
+            
+           Start()
+        case "q":
+            os.Exit(0)
+        default:
+            fmt.Println("Incorrect choice")
+            victorySorcier()
+    }
+    }
     fmt.Println("Next game ?")
     fmt.Println("Yes. continue")
     fmt.Println("No. quit game")
-    fmt.Scanln(&win)
-    switch win {
+    fmt.Scanln(&WinDeSorcier)
+    switch WinDeSorcier {
         case "Yes":
-            ValueDeJeu += 1 
-            submenu_perso3()
+            
+           submenu_perso3()
         case "No":
             os.Exit(0)
         default:
             fmt.Println("Incorrect choice")
-            victoryElfe()
+            victorySorcier()
     }
 }
 
 func loseSorcier() {
     fmt.Println("Enemy has won.")
+    Start()
     //suite
 }

@@ -25,18 +25,18 @@ type InventoryElfe struct {
     EffectType string //son type
     Value      int 
 }
-
+var (enemyElfe = Tank{Name: "Enemy", Health: 75}  //nom et points de vie de l'ennemi
+    playerElfe = Tank{Name: "Chiro", Health: 80} //nom et points de vie du perso2 
+    ValueDeElfe int
+    WinDeElfe string
+)
 //initialisation du combat en tant que perso2
 func GameElfe(inventory []Object) {
     rand.Seed(time.Now().UnixNano())
 
-    player := Elfe{Name: "Chiro", Health: 80} //nom et points de vie du perso2
-    Enemy := Enemy{Name: "Enemy", Health: 75} //nom et points de vie de l'ennemi
 
-    for ValueDeJeu > 1 { //ajoute 25HP si l'ennemi a déja été battu
-        Enemy.Health += 25
-        
-    }
+
+   
     
     attack1 := ElfeAttack{Name: "Life thief ", Damage: 15}
     attack2 := ElfeAttack{Name: "Golden arrow ", Damage: 25}
@@ -45,9 +45,9 @@ func GameElfe(inventory []Object) {
 
     TourDeCombat := 1
 
-    for player.Health > 0 && Enemy.Health > 0 { //vérifie si les 2 ont de la vie
+    for playerElfe.Health > 0 && enemyElfe.Health > 0 { //vérifie si les 2 ont de la vie
         fmt.Printf("\nRound: %d\n", TourDeCombat)
-        fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", player.Name, player.Health, Enemy.Name, Enemy.Health)
+        fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", playerElfe.Name, playerElfe.Health, enemyElfe.Name, enemyElfe.Health)
         var choice int
         if len(inventory) == 0 {
             fmt.Println("You have no items left.")
@@ -88,7 +88,7 @@ func GameElfe(inventory []Object) {
                     continue
                 }
 
-                Enemy.Health -= enemyDamage
+                enemyElfe.Health -= enemyDamage
                 fmt.Printf("\nYou did %d damage to enemy!\n", enemyDamage)
 
         case 2: //2 = utiliser un objet
@@ -109,19 +109,19 @@ func GameElfe(inventory []Object) {
         usedItem := inventory[itemChoice-1]
         switch usedItem.Effect {
         case "Heal":
-            player.Health += usedItem.Price
+            playerElfe.Health += usedItem.Price
             fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 15)
         case "Poison":
-            Enemy.Health -= usedItem.Price
+            enemyElfe.Health -= usedItem.Price
             fmt.Printf("\nYou used %s and dealt %d damage to the enemy!\n", usedItem.Name, 15)
         case "Upgrade":
             playerAttack := attack1
             playerAttack.Damage = int(float64(playerAttack.Damage) * 1.2)
             enemyDamage := rand.Intn(playerAttack.Damage)
-            Enemy.Health -= enemyDamage
+            enemyElfe.Health -= enemyDamage
             fmt.Printf("\nYou used %s and did %d damage to the enemy!\n", usedItem.Name, enemyDamage)
         case "Shield":
-            player.Health += usedItem.Price
+            playerElfe.Health += usedItem.Price
             fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
         }
         inventory = append(inventory[:itemChoice-1], inventory[itemChoice:]...)
@@ -130,15 +130,15 @@ func GameElfe(inventory []Object) {
             continue
         }
 
-        if Enemy.Health <= 0 {
+        if enemyElfe.Health <= 0 {
             victoryElfe()
         }
 
         EnemyAttack := ElfeAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
-        player.Health -= EnemyAttack.Damage
+        playerElfe.Health -= EnemyAttack.Damage
         fmt.Printf("Enemy did %d damage to you!\n", EnemyAttack.Damage)
 
-        if player.Health <= 0 {
+        if playerElfe.Health <= 0 {
             loseElfe()
         }
         TourDeCombat++
@@ -149,14 +149,43 @@ func GameElfe(inventory []Object) {
 //relance une partie si on a gagné la précédente
 func victoryElfe () {
     fmt.Println("You have won!")
+    enemyElfe.Health =75
+    playerTank.Health=80
+    ValueDeElfe++
+    if ValueDeElfe == 1 {
+        enemyElfe.Health =100
+       
+    } else if ValueDeElfe == 2 {
+        enemyElfe.Health =125
+       
+    }else if ValueDeElfe == 3 {
+        enemyElfe.Health = 150
+    } else if ValueDeElfe == 4{
+        fmt.Println("\nYou've saved our world !")
+        fmt.Println("Congratulations, you've just completed the game.")
+    
+    fmt.Println("\nr. Restart a new game")
+    fmt.Println("q. quit game")
+    fmt.Scanln(&WinDeElfe)
+    switch WinDeElfe {
+        case "r":
+            
+           Start()
+        case "q":
+            os.Exit(0)
+        default:
+            fmt.Println("Incorrect choice")
+            victoryElfe()
+    }
+    }
     fmt.Println("Next game ?")
     fmt.Println("Yes. continue")
     fmt.Println("No. quit game")
-    fmt.Scanln(&win)
-    switch win {
+    fmt.Scanln(&WinDeElfe)
+    switch WinDeElfe {
         case "Yes":
-            ValueDeJeu += 1 
-            submenu_perso2()
+            
+           submenu_perso2()
         case "No":
             os.Exit(0)
         default:
@@ -167,5 +196,6 @@ func victoryElfe () {
 
 func loseElfe() {
     fmt.Println("Enemy has won.")
+    Start()
     //suite
 }

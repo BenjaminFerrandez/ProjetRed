@@ -12,7 +12,7 @@ var ChoicePerso int //va servir pour choisir son personnage
 //démarrage
 func Start() {
 	fmt.Println("\nM A I N    M E N U")
-	fmt.Println("p. Play") //différents choix = jouer, retour en arrière ou quitter
+	fmt.Println("\np. Play") //différents choix = jouer, retour en arrière ou quitter
 	fmt.Println("r. Return to start screen")
 	fmt.Println("q. Quit game")
 
