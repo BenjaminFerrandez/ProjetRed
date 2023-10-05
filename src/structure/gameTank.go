@@ -172,15 +172,15 @@ func victoryTank() {
     enemyTank.Health =75
     playerTank.Health=100
    
-    if ValueDeTank == 1 {
+    if ValueDeTank == 0 {
         enemyTank.Health =100
        
-    } else if ValueDeTank == 2 {
+    } else if ValueDeTank == 1 {
         enemyTank.Health =125
        
-    }else if ValueDeTank == 3 {
+    }else if ValueDeTank == 2 {
         enemyTank.Health = 150
-    } else if ValueDeTank == 4{
+    } else if ValueDeTank == 3{
         fmt.Println("\nYou've saved our world !")
         fmt.Println("Congratulations, you've just completed the game.")
     

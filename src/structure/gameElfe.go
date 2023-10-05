@@ -167,15 +167,15 @@ func victoryElfe () {
     enemyElfe.Health =75
     playerElfe.Health=80
     
-    if ValueDeElfe == 1 {
+    if ValueDeElfe == 0 {
         enemyElfe.Health =100
        
-    } else if ValueDeElfe == 2 {
+    } else if ValueDeElfe == 1 {
         enemyElfe.Health =125
        
-    }else if ValueDeElfe == 3 {
+    }else if ValueDeElfe == 2 {
         enemyElfe.Health = 150
-    } else if ValueDeElfe == 4{
+    } else if ValueDeElfe == 3{
         ValueDeElfe = 0
         fmt.Println("\nYou've saved our world !")
         fmt.Println("Congratulations, you've just completed the game.")

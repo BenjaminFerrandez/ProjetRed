@@ -170,15 +170,15 @@ func victorySorcier() {
     enemySorcier.Health =75
     playerSorcier.Health=90
    
-    if ValueDeSorcier == 1 {
+    if ValueDeSorcier == 0 {
         enemySorcier.Health =100
        
-    } else if ValueDeSorcier == 2 {
+    } else if ValueDeSorcier == 1 {
         enemySorcier.Health =125
        
-    }else if ValueDeSorcier == 3 {
+    }else if ValueDeSorcier == 2 {
         enemySorcier.Health = 150
-    } else if ValueDeSorcier == 4{
+    } else if ValueDeSorcier == 3{
         fmt.Println("\nYou've saved our world !")
         fmt.Println("Congratulations, you've just completed the game.")
     
