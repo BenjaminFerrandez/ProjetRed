@@ -171,7 +171,7 @@ func victoryTank() {
     fmt.Println("You have won!")
     enemyTank.Health =75
     playerTank.Health=100
-    ValueDeTank++
+   
     if ValueDeTank == 1 {
         enemyTank.Health =100
        

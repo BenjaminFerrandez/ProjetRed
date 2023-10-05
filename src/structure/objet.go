@@ -66,7 +66,7 @@ func Obj() {
 //achats des objets et/ou début du jeu
 func ChoixObj() {
     fmt.Println("\ng. Go!")
-    fmt.Println("i. Show inventaire")
+
 	fmt.Println("r. Return to previous menu")
 	fmt.Println("q. Quit game")
     fmt.Scanln(&choice)
