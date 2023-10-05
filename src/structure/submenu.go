@@ -2,13 +2,13 @@ package structure
 
 import (
 	"fmt"
-	
+
 	"os"
 )
 
 type Enemy struct {
-    Name string
-    Health int
+	Name   string
+	Health int
 }
 
 //choix du personnage
@@ -21,19 +21,19 @@ func submenu1() {
 
 	fmt.Scanln(&Choice)
 	switch Choice {
-		case "1":
-			submenu_perso1() //perso1
-		case "2":
-			submenu_perso2() //perso2
-		case "3":
-			submenu_perso3() //perso3
-		case "r":
-			Start() //retour en arrière
-		case "q":
-			os.Exit(0) //Quitter
-		default:
-			fmt.Println("Incorrect Choice.")
-			submenu1() //choix incorrect
+	case "1":
+		submenu_perso1() //perso1
+	case "2":
+		submenu_perso2() //perso2
+	case "3":
+		submenu_perso3() //perso3
+	case "r":
+		Start() //retour en arrière
+	case "q":
+		os.Exit(0) //Quitter
+	default:
+		fmt.Println("Incorrect Choice.")
+		submenu1() //choix incorrect
 	}
 }
 
@@ -48,16 +48,16 @@ func submenu_perso1() {
 
 	fmt.Scanln(&Choice)
 	switch Choice {
-		case "s":
-			ChoicePerso = 1
-			Obj() //commencer le jeu avec le perso1
-		case "r":
-			submenu1() //retour en arrière
-		case "q":
-			os.Exit(0) //Quitter
-		default:
-			fmt.Println("Incorrect Choice.")
-			submenu_perso1() //choix incorrect
+	case "s":
+		ChoicePerso = 1
+		Obj() //commencer le jeu avec le perso1
+	case "r":
+		submenu1() //retour en arrière
+	case "q":
+		os.Exit(0) //Quitter
+	default:
+		fmt.Println("Incorrect Choice.")
+		submenu_perso1() //choix incorrect
 	}
 }
 
@@ -72,16 +72,16 @@ func submenu_perso2() {
 
 	fmt.Scanln(&Choice)
 	switch Choice {
-		case "s":
-			ChoicePerso = 2
-			Obj() //commencer le jeu avec le perso2
-		case "r":
-			submenu1() //retour en arrière
-		case "q":
-			os.Exit(0) //Quitter
-		default:
-			fmt.Println("Incorrect Choice.")
-			submenu_perso2() //choix incorrect
+	case "s":
+		ChoicePerso = 2
+		Obj() //commencer le jeu avec le perso2
+	case "r":
+		submenu1() //retour en arrière
+	case "q":
+		os.Exit(0) //Quitter
+	default:
+		fmt.Println("Incorrect Choice.")
+		submenu_perso2() //choix incorrect
 	}
 }
 
@@ -93,18 +93,18 @@ func submenu_perso3() {
 	fmt.Println("\ns. Start game as Sorcier")
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
-	
+
 	fmt.Scanln(&Choice)
 	switch Choice {
-		case "s":
-			ChoicePerso = 3
-			Obj() //commencer le jeu avec le perso3
-		case "r":
-			submenu1() //retour en arrière
-		case "q":
-			os.Exit(0) //Quitter
-		default:
-			fmt.Println("Incorrect Choice.")
-			submenu_perso3() //choix incorrect
+	case "s":
+		ChoicePerso = 3
+		Obj() //commencer le jeu avec le perso3
+	case "r":
+		submenu1() //retour en arrière
+	case "q":
+		os.Exit(0) //Quitter
+	default:
+		fmt.Println("Incorrect Choice.")
+		submenu_perso3() //choix incorrect
 	}
 }

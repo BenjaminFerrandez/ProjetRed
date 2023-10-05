@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"time"
-
+    "os"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 
@@ -132,7 +132,7 @@ func history(screen *ebiten.Image) error {
                     currentLineIndex = 0
                 } else if button.Label == "Quit" {
                     fmt.Println("Goodbye!")
-                    return fmt.Errorf("Quit")
+                    os.Exit(0)
                 }
             }
         }

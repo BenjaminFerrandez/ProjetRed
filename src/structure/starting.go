@@ -2,7 +2,7 @@ package structure
 
 import (
 	"fmt"
-	
+
 	"os"
 )
 
@@ -18,13 +18,13 @@ func Start() {
 
 	fmt.Scanln(&Choice)
 	switch Choice {
-		case "p":
-			submenu1() //suite du jeu
+	case "p":
+		submenu1() //suite du jeu
 
-		case "q":
-			os.Exit(0) //Quitter
-		default:
-			fmt.Println("Incorrect Choice. Please select an option from the menu (p, r or q)")
-			Start() //choix incorrect, la fonction recommence
+	case "q":
+		os.Exit(0) //Quitter
+	default:
+		fmt.Println("Incorrect Choice. Please select an option from the menu (p, r or q)")
+		Start() //choix incorrect, la fonction recommence
 	}
 }
