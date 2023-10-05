@@ -35,6 +35,7 @@ func main() {
         fmt.Scanln(&choice)
         switch choice {
         	case "s":
+             
                 fmt.Println("Goodluck and enjoy !")
                 structure.Start() //lancement du jeu
        		case "q":

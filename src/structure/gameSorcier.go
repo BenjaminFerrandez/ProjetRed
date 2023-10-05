@@ -34,6 +34,7 @@ var (enemySorcier = Sorcier{Name: "Enemy", Health: 75}//nom et points de vie du 
 
 //début du combat en tant que perso3
 func GameSorcier(inventory []Object) {
+    fmt.Print("\033[H\033[2J")
     rand.Seed(time.Now().UnixNano())
 
    
@@ -154,7 +155,7 @@ if len(inventory) == 0 {
         enemyAttack := SorcierAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
         playerSorcier.Health -= enemyAttack.Damage
         fmt.Printf("Enemy did %d damage to you!\n", enemyAttack.Damage)
-
+      
         if playerSorcier.Health <= 0 {
             loseSorcier()
         }
@@ -167,7 +168,7 @@ if len(inventory) == 0 {
 func victorySorcier() {
     fmt.Println("You have won!")
     enemySorcier.Health =75
-    playerSorcier.Health=100
+    playerSorcier.Health=90
    
     if ValueDeSorcier == 1 {
         enemySorcier.Health =100
@@ -201,7 +202,7 @@ func victorySorcier() {
     fmt.Scanln(&WinDeSorcier)
     switch WinDeSorcier {
         case "c":
-            ValueDeElfe++
+            ValueDeSorcier++
             inventory = []Object{}
             Health = 0
             Poison = 0

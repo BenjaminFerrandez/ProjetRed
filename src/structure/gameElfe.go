@@ -34,6 +34,7 @@ var (enemyElfe = Elfe{Name: "Enemy", Health: 75}  //nom et points de vie de l'en
 )
 //initialisation du combat en tant que perso2
 func GameElfe(inventory []Object) {
+    fmt.Print("\033[H\033[2J")
     rand.Seed(time.Now().UnixNano())
 
 
@@ -151,7 +152,7 @@ func GameElfe(inventory []Object) {
         EnemyAttack := ElfeAttack{Name: "Enemy attacks", Damage: rand.Intn(10) + 10}
         playerElfe.Health -= EnemyAttack.Damage
         fmt.Printf("Enemy did %d damage to you!\n", EnemyAttack.Damage)
-
+        
         if playerElfe.Health <= 0 {
             loseElfe()
         }

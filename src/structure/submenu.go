@@ -13,6 +13,7 @@ type Enemy struct {
 
 //choix du personnage
 func submenu1() {
+	fmt.Print("\033[H\033[2J")
 	fmt.Println("\nC H A R A C T E R S")
 	ChoixPersonne() //affiche les noms et classe de chaque personnages
 	fmt.Println("\n r. Return to Main Menu")
@@ -38,6 +39,7 @@ func submenu1() {
 
 //perso1
 func submenu_perso1() {
+	fmt.Print("\033[H\033[2J")
 	fmt.Println("T A N K")
 	InfoTank() //affiche les infos du perso1
 	fmt.Println("\ns. Start game as Tank")
@@ -61,6 +63,7 @@ func submenu_perso1() {
 
 //perso2
 func submenu_perso2() {
+	fmt.Print("\033[H\033[2J")
 	fmt.Println("E L F E")
 	InfoElfe() //affiche les infos du perso2
 	fmt.Println("\ns. Start game as Elfe")
@@ -84,6 +87,7 @@ func submenu_perso2() {
 
 //perso3
 func submenu_perso3() {
+	fmt.Print("\033[H\033[2J")
 	fmt.Println("S O R C I E R")
 	InfoSorcier() //affiche les infos du perso3
 	fmt.Println("\ns. Start game as Sorcier")

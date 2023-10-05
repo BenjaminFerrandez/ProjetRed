@@ -35,6 +35,7 @@ var (enemyTank = Tank{Name: "Enemy", Health: 75}//nom et points de vie de l'enne
 
 //début du combat en tant que perso1
 func GameTank(inventory []Object) {
+    fmt.Print("\033[H\033[2J")
     rand.Seed(time.Now().UnixNano())
 
   
@@ -203,7 +204,7 @@ func victoryTank() {
     fmt.Scanln(&WinDeTank)
     switch WinDeTank {
         case "c":
-            ValueDeElfe++
+            ValueDeTank++
             inventory = []Object{}
             Health = 0
             Poison = 0

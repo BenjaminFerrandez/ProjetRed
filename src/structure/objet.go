@@ -27,7 +27,7 @@ var Torsal_armurr int= 0
 
 //création des objets
 func Obj() {
-
+    fmt.Print("\033[H\033[2J")
     fmt.Println("\nI N V E N T O R Y")
     fmt.Printf("")
     fmt.Println("You can buy item only one time")
@@ -120,8 +120,7 @@ func ChoixObj() {
                GameSorcier(inventory) //en tant que Sorcier (perso3)
       }
 
-        case "i":
-            Inventaire() //affiche les objets achetés
+     
         case "r":
 		    ChoixPersonne() //retour en arrière
 		case "q":
@@ -273,22 +272,3 @@ func Torsal_armur() {
     }
 }
 
-func Inventaire() {
-    fmt.Println("\nYou have:")
-    for i := 0; i <= stock-1; i++ {
-        if Health != 0 {
-            fmt.Println(Health, "health potion")
-            Health = 0
-        } else if Poison != 0 {
-            fmt.Println(Poison, "poison potion")
-            Poison = 0
-        } else if Upgrade != 0 {
-            fmt.Println(Upgrade, "upgrade potion")
-            Upgrade = 0
-        } else if Shieldd != 0 {
-            fmt.Println(Shieldd, "shield")
-            Shieldd = 0
-        }
-    }
-Obj() 
-}
