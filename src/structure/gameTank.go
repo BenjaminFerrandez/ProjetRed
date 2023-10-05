@@ -133,9 +133,15 @@ if len(inventory) == 0 {
                 enemyDamage := playerAttack.Damage
                 enemyTank.Health -= enemyDamage
                 fmt.Printf("\nYou used %s and did %d damage to the enemy!\n", usedItem.Name, enemyDamage)
-            case "Shield":
+            case "Give HP Shield":
                 playerTank.Health += usedItem.Price
                 fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
+                  case "Give HP Helmet":
+                playerTank.Health += 20
+                fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 20)
+            case "Give HP Torsal":
+                playerTank.Health += 30
+                fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 30)
             }
 
             inventory = append(inventory[:itemChoice-1], inventory[itemChoice:]...)
@@ -192,21 +198,23 @@ func victoryTank() {
     }
     }
     fmt.Println("Next game ?")
-    fmt.Println("y. continue")
-    fmt.Println("n. quit game")
+    fmt.Println("c. continue")
+    fmt.Println("q. quit game")
     fmt.Scanln(&WinDeTank)
     switch WinDeTank {
-        case "y":
+        case "c":
             ValueDeElfe++
             inventory = []Object{}
             Health = 0
             Poison = 0
             Upgrade = 0
             Shieldd = 0
+            Helmett = 0
+            Torsal_armurr = 0
             stock = 0
             Coins = 100
            submenu_perso1()
-        case "n":
+        case "q":
             os.Exit(0)
         default:
             fmt.Println("Incorrect choice")

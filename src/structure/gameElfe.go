@@ -116,10 +116,10 @@ func GameElfe(inventory []Object) {
         usedItem := inventory[itemChoice-1]
         switch usedItem.Effect {
         case "Heal":
-            playerElfe.Health += usedItem.Price
+            playerElfe.Health += 15
             fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 15)
         case "Poison":
-            enemyElfe.Health -= usedItem.Price
+            enemyElfe.Health -= 15
             fmt.Printf("\nYou used %s and dealt %d damage to the enemy!\n", usedItem.Name, 15)
         case "Upgrade":
             playerAttack := attack1
@@ -127,11 +127,17 @@ func GameElfe(inventory []Object) {
             enemyDamage := rand.Intn(playerAttack.Damage)
             enemyElfe.Health -= enemyDamage
             fmt.Printf("\nYou used %s and did %d damage to the enemy!\n", usedItem.Name, enemyDamage)
-        case "Shield":
+        case "Give HP Shield":
             playerElfe.Health += usedItem.Price
             fmt.Printf("\nYou used %s that reduces incoming damage!\n", usedItem.Name)
+        case "Give HP Helmet":
+            playerElfe.Health += 20
+            fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 20)
+        case "Give HP Torsal":
+            playerElfe.Health += 30
+            fmt.Printf("\nYou used %s and restored %d health!\n", usedItem.Name, 30)
         }
-      
+        
         inventory = append(inventory[:itemChoice-1], inventory[itemChoice:]...)
         default:
             fmt.Println("Incorrect choice.")
@@ -189,21 +195,23 @@ func victoryElfe () {
     }
     }
     fmt.Println("Next game ?")
-    fmt.Println("y. continue")
-    fmt.Println("n. quit game")
+    fmt.Println("c. continue")
+    fmt.Println("q. quit game")
     fmt.Scanln(&WinDeElfe)
     switch WinDeElfe {
-        case "y":
+        case "c":
             ValueDeElfe++
             inventory = []Object{}
             Health = 0
             Poison = 0
             Upgrade = 0
             Shieldd = 0
+            Helmett = 0
+            Torsal_armurr = 0
             stock = 0
             Coins = 100
            submenu_perso2()
-        case "n":
+        case "q":
             os.Exit(0)
         default:
             fmt.Println("Incorrect choice")

@@ -124,7 +124,7 @@ func history(screen *ebiten.Image) error {
             if mouseX >= button.X && mouseX <= button.X+button.Width && mouseY >= button.Y && mouseY <= button.Y+button.Height {
                 // button click 
                 if button.Label == "Play" {
-               
+                    return fmt.Errorf("Play")
                 } else if button.Label == "Return" {
                   
                     gameState = GameStateHistory

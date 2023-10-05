@@ -34,12 +34,12 @@ func Obj() {
     fmt.Println("You have", Coins, "gold coins and", stock, "item on", stockmax)
 	fmt.Print("\n")
 
-    Health_potion := Object{Name: "1. Health potion :", Effect: "Give you 15HP and costs", Price: 25, Sentence: "$. Number of health potion :", Stock: 1}
-    Poison_potion := Object{Name: "2. Poison potion :", Effect: "Make lose 15HP to the enemy and costs", Price: 25, Sentence: "$. Number of poison potion :", Stock: 1}
+    Health_potion  := Object{Name: "1. Health potion :", Effect: "Give you 15HP and costs", Price: 25, Sentence: "$. Number of health potion :", Stock: 1}
+    Poison_potion  := Object{Name: "2. Poison potion :", Effect: "Make lose 15HP to the enemy and costs", Price: 25, Sentence: "$. Number of poison potion :", Stock: 1}
     Upgrade_potion := Object{Name: "3. Upgrade potion :", Effect: "Upgrade your next attack by 20%, one time and costs", Price: 40, Sentence: "$. Number of upgrade potion :", Stock: 1}
-    Shield :=  Object{Name: "4. Shield :", Effect: "Reduces your damage by 15%, of the next attack suffered and costs", Price: 35, Sentence: "$. Number of shield :", Stock: 1}
-    //Helmet := Object{Name: "5. Helmet :", Effect: "Give you 20HP and costs", Price: 40, Sentence: "$. Number of helmet :", Stock: 1}
-    //Torsal_armur := Object{Name: "6. Torsal armur :", Effect: "Give you 30HP and costs", Price: 60, Sentence: "$. Number of torsal armur :", Stock: 1}
+    Shield         := Object{Name: "4. Shield :", Effect: "Reduces your damage by 15%, of the next attack suffered and costs", Price: 35, Sentence: "$. Number of shield :", Stock: 1}
+    Helmet         := Object{Name: "5. Helmet :", Effect: "Give you 20HP and costs", Price: 40, Sentence: "$. Number of helmet :", Stock: 1}
+    Torsal_armur   := Object{Name: "6. Torsal armur :", Effect: "Give you 30HP and costs", Price: 60, Sentence: "$. Number of torsal armur :", Stock: 1}
     
     
     if Health == 0 {
@@ -54,12 +54,12 @@ func Obj() {
     if Shieldd == 0 {
         fmt.Println(Shield)
     }
-    //if Helmett == 0 {
-        //fmt.Println(Helmet)
-    //}
-    //if Torsal_armurr == 0 {
-        //fmt.Println(Torsal_armur)
-    //}
+    if Helmett == 0 {
+        fmt.Println(Helmet)
+    }
+    if Torsal_armurr == 0 {
+        fmt.Println(Torsal_armur)
+    }
     ChoixObj()
 }
 
@@ -98,6 +98,18 @@ func ChoixObj() {
             } else {
                 fmt.Println("You've already bought this item")
                 Obj()
+            }
+        case "5":
+            if Helmett == 0 {
+                Helmet()
+            } else {
+                fmt.Println("You've already bought this item")
+            }
+        case "6":
+            if Torsal_armurr == 0 {
+                Torsal_armur()
+            } else {
+                fmt.Println("You've already bought this item")
             }
         case "g": //lancement du jeu
             if ChoicePerso == 1{
@@ -216,7 +228,7 @@ func Shield() {
     Obj() 
         } else {
 
-        item := Object{Name: "Shield", Effect: "Give HP", Price: 40, Stock: 1}
+        item := Object{Name: "Shield", Effect: "Give HP Shield", Price: 40, Stock: 1}
         inventory = AddToInventory(inventory, item)
      
         stock = stock + 1
@@ -226,40 +238,40 @@ func Shield() {
     }
 }
 
-//func Helmet() {
-    //if stock == stockmax {
-        //fmt.Println("No more place in your inventory")
-    //Obj() 
-    //} else if Coins < 40 {
-        //fmt.Println("Not enough coins for this item")
-    //Obj() 
-        //} else {
-        //item := Object{Name: "Shield", Effect: "Reduit Degat", Price: 40, Stock: 1}
-        //inventory = AddToInventory(inventory, item)
+func Helmet() {
+    if stock == stockmax {
+        fmt.Println("No more place in your inventory")
+    Obj() 
+    } else if Coins < 40 {
+        fmt.Println("Not enough coins for this item")
+    Obj() 
+        } else {
+        item := Object{Name: "Helmet", Effect: "Give HP Helmet", Price: 40, Stock: 1}
+        inventory = AddToInventory(inventory, item)
      
-        //stock = stock + 1
-        //Helmett = Helmett + 1  
-    //Obj() 
-    //}
-//}
+        stock = stock + 1
+        Helmett = Helmett + 1  
+    Obj() 
+    }
+}
 
-//func Torsal_armur() {
-    //if stock == stockmax {
-        //fmt.Println("No more place in your inventory")
-    //Obj() 
-    //} else if Coins < 60 {
-        //fmt.Println("Not enough coins for this item")
-    //Obj() 
-        //} else {
-        //item := Object{Name: "Torsal armur", Effect: "Give HP", Price: 60, Stock: 1}
-        //inventory = AddToInventory(inventory, item)
+func Torsal_armur() {
+    if stock == stockmax {
+        fmt.Println("No more place in your inventory")
+    Obj() 
+    } else if Coins < 60 {
+        fmt.Println("Not enough coins for this item")
+    Obj() 
+        } else {
+        item := Object{Name: "Torsal armur", Effect: "Give HP Torsal", Price: 60, Stock: 1}
+        inventory = AddToInventory(inventory, item)
      
-        //stock = stock + 1
-        //Torsal_armurr = Torsal_armurr + 1
+        stock = stock + 1
+        Torsal_armurr = Torsal_armurr + 1
         
-    //Obj() 
-    //}
-//}
+    Obj() 
+    }
+}
 
 func Inventaire() {
     fmt.Println("\nYou have:")
