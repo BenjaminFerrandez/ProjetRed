@@ -148,8 +148,5 @@ func history(screen *ebiten.Image) error {
 }
     }
     
-    // Здесь можно обновлять состояние игры и рисовать графику
-    // ...
-    
     return nil
 }
