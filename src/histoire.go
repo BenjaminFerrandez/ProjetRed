@@ -44,14 +44,14 @@ var (
 
 func init() {
     // Download image
-    img, _, err := ebitenutil.NewImageFromFile("/home/alexandre/ProjetRed (copy graphique)/src/screen/edit1024x768.png", ebiten.FilterDefault) // Укажите путь к вашему изображению фона
+    img, _, err := ebitenutil.NewImageFromFile("./screen/edit1024x768.png", ebiten.FilterDefault) // Укажите путь к вашему изображению фона
     if err != nil {
         panic(err)
     }
     backgroundImg = img
 
 
-    fontData, err := ioutil.ReadFile("/home/alexandre/ProjetRed (copy graphique)/src/screen/MenuCard.ttf")
+    fontData, err := ioutil.ReadFile("./screen/MenuCard.ttf")
     if err != nil {
         log.Fatal(err)
     }
