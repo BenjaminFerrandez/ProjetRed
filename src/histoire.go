@@ -71,17 +71,17 @@ func init() {
         log.Fatal(err)
     }
     // Load images for buttons
-playImg, _, err := ebitenutil.NewImageFromFile("/home/alexandre/Téléchargements/ProjetRed/src/screen/23-04-47-748.png", ebiten.FilterDefault)
+playImg, _, err := ebitenutil.NewImageFromFile("./screen/23-04-47-748.png", ebiten.FilterDefault)
 if err != nil {
     log.Fatal(err)
 }
 
-returnImg, _, err := ebitenutil.NewImageFromFile("/home/alexandre/Téléchargements/ProjetRed/src/screen/23-04-47-748.png", ebiten.FilterDefault)
+returnImg, _, err := ebitenutil.NewImageFromFile("./screen/23-04-47-748.png", ebiten.FilterDefault)
 if err != nil {
     log.Fatal(err)
 }
 
-quitImg, _, err := ebitenutil.NewImageFromFile("/home/alexandre/Téléchargements/ProjetRed/src/screen/23-04-47-748.png", ebiten.FilterDefault)
+quitImg, _, err := ebitenutil.NewImageFromFile("./screen/23-04-47-748.png", ebiten.FilterDefault)
 if err != nil {
     log.Fatal(err)
 }
