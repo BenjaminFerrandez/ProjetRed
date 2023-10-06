@@ -31,15 +31,15 @@ func Obj() {
 	fmt.Println("\nI N V E N T O R Y")
 	fmt.Printf("")
 	fmt.Println("You can buy item only one time")
-	fmt.Println("You have", Coins, "gold coins and", stock, "item on", stockmax)
+	fmt.Println("You have", Coins, "coins and", stock, "item on", stockmax)
 	fmt.Print("\n")
 
-	Health_potion := Object{Name: "1. Health potion :", Effect: "Give you 15HP and costs", Price: 25, Sentence: "$. Number of health potion :", Stock: 1}
-	Poison_potion := Object{Name: "2. Poison potion :", Effect: "Make lose 15HP to the enemy and costs", Price: 25, Sentence: "$. Number of poison potion :", Stock: 1}
-	Upgrade_potion := Object{Name: "3. Upgrade potion :", Effect: "Upgrade your next attack by 20%, one time and costs", Price: 40, Sentence: "$. Number of upgrade potion :", Stock: 1}
-	Shield := Object{Name: "4. Shield :", Effect: "Reduces your damage by 15%, of the next attack suffered and costs", Price: 35, Sentence: "$. Number of shield :", Stock: 1}
-	Helmet := Object{Name: "5. Helmet :", Effect: "Give you 20HP and costs", Price: 40, Sentence: "$. Number of helmet :", Stock: 1}
-	Torsal_armur := Object{Name: "6. Torsal armur :", Effect: "Give you 30HP and costs", Price: 60, Sentence: "$. Number of torsal armur :", Stock: 1}
+	Health_potion := Object{Name: "1. Health potion :", Effect: "Give you 15HP and costs", Price: 25, Sentence: "coins. Number of health potion :", Stock: 1}
+	Poison_potion := Object{Name: "2. Poison potion :", Effect: "Make lose 15HP to the enemy and costs", Price: 25, Sentence: "coins. Number of poison potion :", Stock: 1}
+	Upgrade_potion := Object{Name: "3. Upgrade potion :", Effect: "Upgrade your next attack by 20%, one time and costs", Price: 40, Sentence: "coins. Number of upgrade potion :", Stock: 1}
+	Shield := Object{Name: "4. Shield :", Effect: "Reduces your damage by 15%, of the next attack suffered and costs", Price: 35, Sentence: "coins. Number of shield :", Stock: 1}
+	Helmet := Object{Name: "5. Helmet :", Effect: "Give you 20HP and costs", Price: 40, Sentence: "coins. Number of helmet :", Stock: 1}
+	Torsal_armur := Object{Name: "6. Torsal armur :", Effect: "Give you 30HP and costs", Price: 60, Sentence: "coins. Number of torsal armur :", Stock: 1}
 
 	if Health == 0 {
 		fmt.Println(Health_potion)
@@ -116,11 +116,11 @@ func ChoixObj() {
 		} else if ChoicePerso == 2 {
 			GameElfe(inventory) //en tant qu'Elfe (perso2)
 		} else if ChoicePerso == 3 {
-			GameSorcier(inventory) //en tant que Sorcier (perso3)
+			GameWizard(inventory) //en tant que Sorcier (perso3)
 		}
 
 	case "r":
-		ChoixPersonne() //retour en arrière
+		ChoiceChar() //retour en arrière
 	case "q":
 		os.Exit(0) //Quitter
 	default:

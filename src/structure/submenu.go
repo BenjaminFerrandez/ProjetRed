@@ -15,7 +15,7 @@ type Enemy struct {
 func submenu1() {
 	fmt.Print("\033[H\033[2J")
 	fmt.Println("\nC H A R A C T E R S")
-	ChoixPersonne() //affiche les noms et classe de chaque personnages
+	ChoiceChar() //affiche les noms et classe de chaque personnages
 	fmt.Println("\n r. Return to Main Menu")
 	fmt.Println(" q. Quit game")
 
@@ -88,9 +88,9 @@ func submenu_perso2() {
 //perso3
 func submenu_perso3() {
 	fmt.Print("\033[H\033[2J")
-	fmt.Println("S O R C I E R")
-	InfoSorcier() //affiche les infos du perso3
-	fmt.Println("\ns. Start game as Sorcier")
+	fmt.Println("W I Z A R D")
+	InfoWizard() //affiche les infos du perso3
+	fmt.Println("\ns. Start game as Wizard")
 	fmt.Println("r. Return to Characters")
 	fmt.Println("q. Quit game")
 

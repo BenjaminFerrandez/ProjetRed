@@ -6,21 +6,20 @@ import (
 	"os"
 )
 
-var Choice string
+var Choice string   //va servir pour les choix de menu
 var ChoicePerso int //va servir pour choisir son personnage
 
 //démarrage
 func Start() {
-	
 	fmt.Println("\nM A I N    M E N U")
-	fmt.Println("\np. Play") //différents choix = jouer, retour en arrière ou quitter
+	//différents choix = jouer, retour en arrière ou quitter
+	fmt.Println("\np. Play")
 	fmt.Println("q. Quit game")
 
 	fmt.Scanln(&Choice)
 	switch Choice {
 	case "p":
 		submenu1() //suite du jeu
-
 	case "q":
 		os.Exit(0) //Quitter
 	default:

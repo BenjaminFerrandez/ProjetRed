@@ -18,14 +18,14 @@ import (
 	"golang.org/x/image/font/opentype"
 )
 
-type Button struct {
+type Button struct { //caractéristique des boutons
 	X, Y, Width, Height int
 	Label               string
 	Image               *ebiten.Image
 	Active              bool
 }
 
-var (
+var ( //histoire du jeu
 	historyLines = []string{
 		"\n                        Welcome in our world !\n",
 		"           A world where people have some magical power.\n",
@@ -52,7 +52,7 @@ var (
 
 func init() {
 	// Download image
-	img, _, err := ebitenutil.NewImageFromFile("./screen/edit1024x768.png", ebiten.FilterDefault) // Укажите путь к вашему изображению фона
+	img, _, err := ebitenutil.NewImageFromFile("./screen/edit1024x768.png", ebiten.FilterDefault) //chemin du fichier
 	if err != nil {
 		panic(err)
 	}
@@ -92,13 +92,14 @@ func init() {
 		log.Fatal(err)
 	}
 
+	//placement des boutons
 	buttons = []Button{
 		{X: 400, Y: 450, Width: 200, Height: 40, Label: "Play", Image: playImg, Active: true},
 		{X: 400, Y: 500, Width: 300, Height: 40, Label: "Return", Image: returnImg, Active: true},
 		{X: 400, Y: 550, Width: 200, Height: 40, Label: "Quit", Image: quitImg, Active: true},
 	}
-	// Initialize audio context
 
+	// Initialize audio context
 	audioContext, err = audio.NewContext(44100)
 	if err != nil {
 		log.Fatal(err)
@@ -114,6 +115,7 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	// Create audio player
 	audioPlayer, err = audio.NewPlayer(audioContext, d)
 	if err != nil {
@@ -123,13 +125,10 @@ func init() {
 }
 
 func history(screen *ebiten.Image) error {
-
 	screen.Fill(color.Black)
 
 	// Play music
-
 	audioPlayer.Play()
-
 	if !gameStarted {
 		if err := screen.DrawImage(backgroundImg, nil); err != nil {
 			return err
@@ -142,10 +141,8 @@ func history(screen *ebiten.Image) error {
 				lastUpdateTime = time.Now()
 			}
 		}
-
 		textX := 100
 		textY := 80
-
 		text.Draw(screen, displayedText, Font, textX, textY, color.White)
 
 		for _, button := range buttons {
@@ -179,6 +176,5 @@ func history(screen *ebiten.Image) error {
 			text.Draw(screen, button.Label, Font, button.X+45, button.Y+35, color)
 		}
 	}
-
 	return nil
 }

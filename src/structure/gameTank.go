@@ -27,11 +27,11 @@ type InventoryTank struct {
 }
 
 var (
-	enemyTank   = Tank{Name: "Enemy", Health: 75}   //nom et points de vie de l'ennemi
-	playerTank  = Tank{Name: "Tenace", Health: 100} //nom et points de vie du perso1
-	ValueDeTank int
-	DefeatTank  int
-	WinDeTank   string
+	enemyTank  = Tank{Name: "Enemy", Health: 75}   //nom et points de vie de l'ennemi
+	playerTank = Tank{Name: "Tenace", Health: 100} //nom et points de vie du perso1
+	ValueTank  int
+	DefeatTank int
+	WinTank    string
 )
 
 //début du combat en tant que perso1
@@ -39,11 +39,11 @@ func GameTank(inventory []Object) {
 	fmt.Print("\033[H\033[2J")
 	rand.Seed(time.Now().UnixNano())
 
-	if DefeatTank != 0 {
+	if DefeatTank != 0 { //augmente les HP de l'ennemi si on l'a déjà tuer
 		playerTank.Health = 80
 		enemyTank.Health = 75
 		DefeatTank = 0
-		ValueDeTank = 0
+		ValueTank = 0
 	}
 
 	attack1 := TankAttack{Name: "Earthquake ", Damage: 25}
@@ -51,11 +51,10 @@ func GameTank(inventory []Object) {
 
 	fmt.Println("Welcome to game!")
 
-	TourDeCombat := 1
+	Round := 1
 
 	for playerTank.Health > 0 && enemyTank.Health > 0 {
-
-		fmt.Printf("\nRound: %d\n", TourDeCombat)
+		fmt.Printf("\nRound: %d\n", Round)
 		fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", playerTank.Name, playerTank.Health, enemyTank.Name, enemyTank.Health)
 		var choice int
 		if len(inventory) == 0 {
@@ -102,7 +101,6 @@ func GameTank(inventory []Object) {
 			fmt.Printf("\nYou did %d damage to enemy!\n", enemyDamage)
 
 		case 2: //2 = utiliser un objet
-			//a revoir
 			fmt.Println("Choose item to use:")
 			for i, item := range inventory {
 				fmt.Printf("%d. %s\n", i+1, item.Name)
@@ -159,7 +157,7 @@ func GameTank(inventory []Object) {
 		if playerTank.Health <= 0 {
 			loseTank()
 		}
-		TourDeCombat++
+		Round++
 	}
 	fmt.Println("Game over.")
 }
@@ -170,24 +168,25 @@ func victoryTank() {
 	enemyTank.Health = 75
 	playerTank.Health = 100
 
-	if ValueDeTank == 0 {
+	//permet d'augmenter les HP de l'ennemi
+	if ValueTank == 0 {
 		enemyTank.Health = 100
 
-	} else if ValueDeTank == 1 {
+	} else if ValueTank == 1 {
 		enemyTank.Health = 125
 
-	} else if ValueDeTank == 2 {
+	} else if ValueTank == 2 {
 		enemyTank.Health = 150
-	} else if ValueDeTank == 3 {
+
+		// 4 victoires = fin du jeu
+	} else if ValueTank == 3 {
 		fmt.Println("\nYou've saved our world !")
 		fmt.Println("Congratulations, you've just completed the game.")
-
 		fmt.Println("\nr. Restart a new game")
 		fmt.Println("q. quit game")
-		fmt.Scanln(&WinDeTank)
-		switch WinDeTank {
+		fmt.Scanln(&WinTank)
+		switch WinTank {
 		case "r":
-
 			Start()
 		case "q":
 			os.Exit(0)
@@ -197,12 +196,12 @@ func victoryTank() {
 		}
 	}
 	fmt.Println("Next game ?")
-	fmt.Println("c. continue")
+	fmt.Println("c. continue") //permet de recommencer une nouvelle partie
 	fmt.Println("q. quit game")
-	fmt.Scanln(&WinDeTank)
-	switch WinDeTank {
+	fmt.Scanln(&WinTank)
+	switch WinTank {
 	case "c":
-		ValueDeTank++
+		ValueTank++
 		inventory = []Object{}
 		Health = 0
 		Poison = 0
@@ -221,9 +220,9 @@ func victoryTank() {
 	}
 }
 
+// Si l'ennemi gagne
 func loseTank() {
 	fmt.Println("Enemy has won.")
 	DefeatTank++
 	Start()
-	//suite
 }

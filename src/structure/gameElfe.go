@@ -39,7 +39,7 @@ func GameElfe(inventory []Object) {
 	fmt.Print("\033[H\033[2J")
 	rand.Seed(time.Now().UnixNano())
 
-	if DefeatElfe != 0 {
+	if DefeatElfe != 0 { //augmente les HP de l'ennemi si on l'a déjà tuer
 		playerElfe.Health = 80
 		enemyElfe.Health = 75
 		DefeatElfe = 0
@@ -51,10 +51,10 @@ func GameElfe(inventory []Object) {
 
 	fmt.Println("Welcome to game!")
 
-	TourDeCombat := 1
+	Round := 1
 
 	for playerElfe.Health > 0 && enemyElfe.Health > 0 { //vérifie si les 2 ont de la vie
-		fmt.Printf("\nRound: %d\n", TourDeCombat)
+		fmt.Printf("\nRound: %d\n", Round)
 		fmt.Printf("%s (HP: %d) vs %s (HP: %d)\n", playerElfe.Name, playerElfe.Health, enemyElfe.Name, enemyElfe.Health)
 		var choice int
 		if len(inventory) == 0 {
@@ -156,7 +156,7 @@ func GameElfe(inventory []Object) {
 		if playerElfe.Health <= 0 {
 			loseElfe()
 		}
-		TourDeCombat++
+		Round++
 	}
 	fmt.Println("Game over.")
 }
@@ -167,6 +167,7 @@ func victoryElfe() {
 	enemyElfe.Health = 75
 	playerElfe.Health = 80
 
+	//permet d'augmenter les HP de l'ennemi
 	if ValueDeElfe == 0 {
 		enemyElfe.Health = 100
 
@@ -175,6 +176,8 @@ func victoryElfe() {
 
 	} else if ValueDeElfe == 2 {
 		enemyElfe.Health = 150
+
+		// 4 victoires = fin du jeu
 	} else if ValueDeElfe == 3 {
 		ValueDeElfe = 0
 		fmt.Println("\nYou've saved our world !")
@@ -195,7 +198,7 @@ func victoryElfe() {
 		}
 	}
 	fmt.Println("Next game ?")
-	fmt.Println("c. continue")
+	fmt.Println("c. continue") //permet de recommencer une nouvelle partie
 	fmt.Println("q. quit game")
 	fmt.Scanln(&WinDeElfe)
 	switch WinDeElfe {
@@ -219,9 +222,9 @@ func victoryElfe() {
 	}
 }
 
+// Si l'ennemi gagne
 func loseElfe() {
 	fmt.Println("Enemy has won.")
 	DefeatElfe++
 	Start()
-	//suite
 }

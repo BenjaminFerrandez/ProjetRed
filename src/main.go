@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"game/structure" //permet l'accès aux fichiers du dossier structure
 
-	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten" //import de bibliotheque ebiten pour graphique
 	"golang.org/x/image/font"
 )
 
-const (
+const ( //taille de l'écran
 	screenWidth  = 1024
 	screenHeight = 768
 )
 
-var (
+var ( //caractéristique de l'affichage
 	screen          *ebiten.Image
 	backgroundImg   *ebiten.Image
 	gameStarted     bool
@@ -22,17 +22,15 @@ var (
 )
 
 //première fonction lancée
-
 func main() {
 	for {
-		ebiten.Run(history, screenWidth, screenHeight, 1, "Death Back")
+		ebiten.Run(history, screenWidth, screenHeight, 1, "Death Back") //titre
 
 		fmt.Println("\nClick 's' to start or 'q' to quit") //premier choix du jeu, commencer ou quitter
 		var choice string                                  //choice va servir pour les choix
 		fmt.Scanln(&choice)
 		switch choice {
 		case "s":
-
 			fmt.Println("Goodluck and enjoy !")
 			structure.Start() //lancement du jeu
 		case "q":

@@ -14,16 +14,16 @@ type Perso struct { //caractéristique d'un personnage
 }
 
 //affiche les noms et classe des personnages
-func ChoixPersonne() {
+func ChoiceChar() {
 	sommaire1 := []string{"   Name:     ", "Class:"}
 	sommaire2 = []string{"HPmax :  ", "HPact :  "}
 	Tank := []string{"1. Tenace   ", "   Tank"}
 	Elfe := []string{"2. Chiro    ", "   Elfe"}
-	Sorcier := []string{"3. Reicros  ", "Sorcier"}
+	Wizard := []string{"3. Reicros  ", " Wizard"}
 	fmt.Println(sommaire1)
 	fmt.Println(Tank)
 	fmt.Println(Elfe)
-	fmt.Println(Sorcier)
+	fmt.Println(Wizard)
 }
 
 //affiche les infos complémentaires du perso1
@@ -51,12 +51,12 @@ func InfoElfe() {
 }
 
 //affiche les infos complémentaires du perso3
-func InfoSorcier() {
-	SorcierInfo := []string{"180      ", "90       "}
+func InfoWizard() {
+	WizardInfo := []string{"180      ", "90       "}
 	fmt.Print("      ")
 	fmt.Println(sommaire2)
 	fmt.Print("      ")
-	fmt.Println(SorcierInfo)
+	fmt.Println(WizardInfo)
 	fmt.Print("")
-	AttackSorcier()
+	AttackWizard()
 }

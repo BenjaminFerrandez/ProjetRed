@@ -30,7 +30,7 @@ func AttackElfe() {
 }
 
 //affiche les caractéristique des attaques du perso3
-func AttackSorcier() {
+func AttackWizard() {
 	sommaireattack := []string{"Attack's name:        ", "Damage: ", "Precision: "}
 	Reicros1 := []string{"Fireball              ", "20      ", "75         "}
 	Reicros2 := []string{"Lightning             ", "30      ", "90         "}
